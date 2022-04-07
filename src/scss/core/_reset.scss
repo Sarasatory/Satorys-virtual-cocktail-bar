@@ -1,0 +1,45 @@
+:root {
+  /* 1REM = 1PX */
+  font-size: 6.25%;
+
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-size: 16rem;
+
+  // DEFAULT FONT FAMILY
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* RESET STYLES */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+/* END OF RESET STYLES */
