@@ -19,6 +19,7 @@ const listFavoritesCKT = document.querySelector('.js_list_favorites_CKT');
 //
 
 const searchURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+let callApiUrl = '';
 
 // Arrays con las listas de cócteles "Buscados" y "Favoritos".
 let cocktails = [];
@@ -188,7 +189,11 @@ function paintFun(ckt, swt) {
     for (let index = 1; index < 16; index++) {
       const ingredient = 'strIngredient'.concat(index);
       // Compruebo que el valor devuelto por el ingrediente no sea "null" ni vacio.
-      if (drink[ingredient] !== null && drink[ingredient] !== '') {
+      if (
+        drink[ingredient] !== null &&
+        drink[ingredient] !== '' &&
+        drink[ingredient] !== undefined
+      ) {
         // console.log('DRINK INGREDIENT: ', drink[ingredient]);
         htmlToPaint += `<li class="cocktailCard__list-ingredients__li">${drink[ingredient]}</li>`;
       }
@@ -210,6 +215,18 @@ function paintFun(ckt, swt) {
   listenCocktails();
 }
 
+function callApi(callApiUrl) {
+  // Hago la llamada a la API:
+  fetch(callApiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      cocktails = data.drinks;
+
+      // Llamo a la función que pinta las tarjetas.
+      paintFun(cocktails, 0);
+    });
+}
+
 //
 //
 //
@@ -221,29 +238,12 @@ function handleClickSearch(event) {
   let inputSearchValue = '';
   inputSearchValue = inputSearch.value;
 
-  // Hago la llamada a la API:
-  fetch(searchURL + inputSearchValue)
-    .then((response) => response.json())
-    .then((data) => {
-      cocktails = data.drinks;
+  callApiUrl = searchURL + inputSearchValue;
 
-      // ¡HAY QUE BORRAR ESTA LÍNEA!
-      // cocktailsFavorites = data.drinks;
-      // ¡HAY QUE BORRAR ESTA LÍNEA!
-
-      // Conmutador.
-      // swt = 0 --> Buscados.
-      // swt = 1 --> Favoritos.
-
-      // console.log('FAVORITOS', data.drinks[0]);
-
-      // Llamo a la función que pinta las tarjetas.
-      // Le paso por parámetro el array del resultado de cócteles de la búsqueda de le usuarie.
-      paintFun(cocktails, 0);
-    });
+  // Si quiero meter otra URL tiene que llegar aquí ;)
+  // callApi('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
+  callApi(callApiUrl);
 }
-//
-//
 
 //
 //
