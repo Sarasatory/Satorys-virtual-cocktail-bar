@@ -340,5 +340,47 @@ button {
   box-shadow: none; }
 
 /* END OF RESET STYLES */
+.main {
+  padding: 30rem; }
+
+.resultsCKT-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between; }
+
+.cocktailCard {
+  width: 310rem;
+  padding: 30rem;
+  margin-bottom: 20rem;
+  position: relative;
+  background-color: beige;
+  border-radius: 10rem; }
+  .cocktailCard__icon-favourite {
+    position: absolute;
+    top: 10rem;
+    right: 10rem;
+    font-size: 20rem;
+    color: red; }
+    .cocktailCard__icon-favourite:hover {
+      cursor: pointer; }
+  .cocktailCard__title {
+    font-size: 20rem;
+    margin-bottom: 10rem; }
+  .cocktailCard__img {
+    width: 250rem;
+    height: 250rem;
+    margin-bottom: 10rem; }
+  .cocktailCard__alcoholic {
+    text-align: right;
+    font-size: 14rem; }
+  .cocktailCard__ingredients {
+    text-transform: uppercase;
+    margin-bottom: 10rem; }
+  .cocktailCard__list-ingredients__li {
+    margin-left: 30rem; }
+
+.favorite {
+  background-color: pink; }
 
 /*# sourceMappingURL=main.css.map */

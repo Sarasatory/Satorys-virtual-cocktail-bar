@@ -8,6 +8,48 @@
   <body>
     <main class="main">
       <h1 class="title-h1">Módulo 2 - Evaluación final - Satory</h1>
+      <!-- <section class="randonCKT"></section> -->
+      <!--  -->
+      <!--  -->
+      <section class="searchCKT">
+        <form action="">
+          <label for="inputForm">Búsqueda:</label>
+          <input type="text" name="" id="inputForm" class="js_input_search" />
+
+          <input type="button" value="Buscar" class="js_btn_search" />
+          <input type="button" value="Reset" class="js_btn_reset" />
+        </form>
+      </section>
+      <!--  -->
+      <!--  -->
+      <section class="resultsCKT">
+        <h2 class="title-h2">Cócteles</h2>
+        <div class="resultsCKT-wrapper">
+          <ul class="listSearchCKT js_list_search_CKT">
+            <li class="cocktailCard js_cocktail_card" id="cardId000">
+              <i
+                class="cocktailCard__icon-favourite js_icon_favorite fa-regular fa-heart"
+                id="heartId000"
+              ></i>
+              <h3 class="cocktailCard__title">Nombre del cóctel</h3>
+              <img
+                src="https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg"
+                alt="Imágen de un cóctel"
+                class="cocktailCard__img"
+              />
+              <p class="cocktailCard__alcoholic">Alcohólico</p>
+              <p class="cocktailCard__ingredients">Ingredientes:</p>
+              <ul class="cocktailCard__list-ingredients">
+                <li class="cocktailCard__list-ingredients__li">Ingrediente</li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="listFavorites js_list_favorites_CKT">
+            Lista de cócteles favoritos.
+          </ul>
+        </div>
+      </section>
     </main>
     <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>
