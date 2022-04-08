@@ -32,15 +32,32 @@ let swt = 0;
 //
 // Funciones.
 //
+
+//
+//
+//
+function setLocalStorage() {
+  // Convierto a "string" el array de objetos de con los cócteles favoritos.
+  const locStoCocktailsFavorites = JSON.stringify(cocktailsFavorites);
+
+  // Lo guardo en localStorage.
+  localStorage.setItem('localFavoritesList', locStoCocktailsFavorites);
+}
+
+//
+//
+//
 function getLocalStorage() {
+  console.log('Entro en gelLocalStorage');
   // 1.- Meto en una variable lo que hay en localStorage.
-  const locStoCocktailsFavorites = localStorage.getItem(cocktailsFavorites);
+  let localFavoritesList = '';
+  const locStoCocktailsFavorites = localStorage.getItem('localFavoritesList');
+  console.log('Llego a locStoCocktailsFavorites');
+  console.log('Valor de locStoCocktailsFavorites: ', locStoCocktailsFavorites);
 
   // 2.- Compruebo si había datos guardados.
   // Si no los había, la información devuelta por "localStorage.getItem()" será "null".
-  if (locStoCocktailsFavorites === null) {
-    // Si el valor es "null", no pintamos la lista de favoritos, ya que está vacia.
-  } else {
+  if (locStoCocktailsFavorites !== null) {
     // Si el valor devuelto no es "null", pinto las tarjetas de cócteles favoritos.
     // Parseo la información recogida de localStorage y la guardo en una constante.
     // Asigno esa constante a la variable "cocktailsFavorites".
@@ -93,6 +110,9 @@ function addRemoveFavorites(event) {
     console.log('Estaba, ¡LO QUITO!');
     cocktailsFavorites.splice(itsFavoriteCkt, 1);
   }
+
+  setLocalStorage();
+
   paintFun(cocktailsFavorites, 1);
   paintFun(cocktails, 0);
   console.log(cocktailsFavorites);
