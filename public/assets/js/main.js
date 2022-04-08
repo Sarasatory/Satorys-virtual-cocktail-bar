@@ -164,12 +164,17 @@ function paintFun(ckt, swt) {
       heartStyle = 'fa-solid';
     }
 
+    const imgDrink = ckt[i].strDrinkThumb;
+    if (ckt[i].strDrinkThumb === '') {
+      const imgDrink = '../assets/images/grog001.jpg';
+    }
+
     htmlToPaint += `
       <li class="cocktailCard js_cocktail_card ${addFavoriteClass}" id="${ckt[i].idDrink}">
          <i class="cocktailCard__icon-favourite js_icon_favorite ${heartStyle} fa-heart" id="${ckt[i].idDrink}"></i>
            <h3 class="cocktailCard__title">${ckt[i].strDrink}</h3>
            <img
-             src="${ckt[i].strDrinkThumb}"
+             src="${imgDrink}"
              alt="${ckt[i].strDrink}"
              class="cocktailCard__img"
            />
@@ -241,9 +246,21 @@ function handleClickSearch(event) {
 //
 
 //
+//
+//
+function handleClickReset() {
+  cocktails = [];
+  cocktailsFavorites = [];
+  setLocalStorage();
+  paintFun(cocktails, 0);
+  paintFun(cocktailsFavorites, 1);
+}
+
+//
 // Eventos.
 //
 btnSearch.addEventListener('click', handleClickSearch);
+btnReset.addEventListener('click', handleClickReset);
 
 //
 // AL CARGAR LA PÁGINA:
