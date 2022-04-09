@@ -32,12 +32,17 @@
       <!--  -->
       <!--  -->
       <section class="searchCKT">
-        <ul></ul>
-        <li class="js_header_link js_link001">Sin alcohol</li>
-        <li class="js_header_links">Margaritas</li>
-        <li class="js_header_links">Mojitos</li>
-        <li class="js_header_links">Gins</li>
-        <li class="js_header_links">Cóctel aleatorio</li>
+        <ul>
+          <li class="js_header_link js_link_nonAlcoholic" id="nonAlc">
+            Sin alcohol
+          </li>
+          <li class="js_header_link js_link_margarita" id="mar">Margaritas</li>
+          <li class="js_header_link js_link_mojito" id="moj">Mojitos</li>
+          <li class="js_header_link js_link_gin" id="gin">Gins</li>
+          <li class="js_header_link js_link_randon" id="ran">
+            Cóctel aleatorio
+          </li>
+        </ul>
         <form action="">
           <label for="inputForm">Búsqueda:</label>
           <input type="text" name="" id="inputForm" class="js_input_search" />
@@ -59,7 +64,7 @@
               ></i>
               <h3 class="cocktailCard__title">Nombre del cóctel</h3>
               <img
-                src="../assets/images/grog002.webp"
+                src="../assets/images/grog002.jpeg"
                 alt="Imágen de un cóctel"
                 class="cocktailCard__img"
               />

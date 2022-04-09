@@ -1,7 +1,7 @@
 'use strict';
 
 //
-// Recoger elementos del HTML.
+// ELEMENTOS DEL HTML.
 //
 // Input de búsqueda
 const inputSearch = document.querySelector('.js_input_search');
@@ -15,15 +15,27 @@ const listSearchCKT = document.querySelector('.js_list_search_CKT');
 const listFavoritesCKT = document.querySelector('.js_list_favorites_CKT');
 
 //
-// Constantes y variables.
+// CONSTANTES Y VARIABLES.
 //
 
 const searchURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const nonAlcoholicURL =
+  'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic';
+const margaritaURL =
+  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
+const mojitoURL =
+  'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito';
+const ginURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin';
+const randonURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 let callApiUrl = '';
+
+// Número de elementos "randon" que aparecen al pintar la primera vez.
+let randonIni = 5;
 
 // Arrays con las listas de cócteles "Buscados" y "Favoritos".
 let cocktails = [];
 let cocktailsFavorites = [];
+let cocktailsRandon = [];
 
 // Creo un conmutador para decidir en qué lista hay que pintar.
 // swt = 0 --> Buscados.
@@ -31,11 +43,11 @@ let cocktailsFavorites = [];
 let swt = 0;
 
 //
-// Funciones.
+// FUNCIONES.
 //
 
 //
-//
+// Añade la lista de favoritos a localStorage.
 //
 function setLocalStorage() {
   // Convierto a "string" el array de objetos de con los cócteles favoritos.
@@ -46,7 +58,7 @@ function setLocalStorage() {
 }
 
 //
-//
+// Obtiene la lista de favoritos de localStorage y la comprueba.
 //
 function getLocalStorage() {
   console.log('Entro en gelLocalStorage');
@@ -54,7 +66,7 @@ function getLocalStorage() {
   let localFavoritesList = '';
   const locStoCocktailsFavorites = localStorage.getItem('localFavoritesList');
   console.log('Llego a locStoCocktailsFavorites');
-  console.log('Valor de locStoCocktailsFavorites: ', locStoCocktailsFavorites);
+  // console.log('Valor de locStoCocktailsFavorites: ', locStoCocktailsFavorites);
 
   // 2.- Compruebo si había datos guardados.
   // Si no los había, la información devuelta por "localStorage.getItem()" será "null".
@@ -70,7 +82,7 @@ function getLocalStorage() {
 }
 
 //
-//
+// Añade o elimina elementos de la lista de favoritos.
 //
 function addRemoveFavorites(event) {
   console.log('Entra en addRemoveFavorites');
@@ -120,7 +132,7 @@ function addRemoveFavorites(event) {
 }
 
 //
-//
+// Escucha la lista de iconos de favorito de los cóctles (Los corazoncitos).
 //
 function listenCocktails() {
   console.log('Entra en listenCocktails');
@@ -133,9 +145,55 @@ function listenCocktails() {
 }
 
 //
+// Genera la URL para las búsquedas predefindas.
 //
+function ApiUrlGenerator(event) {
+  console.log('Entra en ApiUrlGenerator');
+
+  // Identifico qué elemento de los "li" ha sido clickado mediante su "id".
+  const liClickedId = event.currentTarget.id;
+  console.log('ID: ', liClickedId);
+
+  if (liClickedId === 'nonAlc') {
+    callApiUrl = nonAlcoholicURL;
+  }
+  if (liClickedId === 'mar') {
+    callApiUrl = margaritaURL;
+  }
+  if (liClickedId === 'moj') {
+    callApiUrl = mojitoURL;
+  }
+  if (liClickedId === 'gin') {
+    callApiUrl = ginURL;
+  }
+  if (liClickedId === 'ran') {
+    callApiUrl = randonURL;
+  }
+  callApi(callApiUrl);
+}
+
+//
+// Escucha la lista de "li" con búsquedas predefinidas.
+//
+function listenPredefinedList() {
+  console.log('Entra en listenPredefinedList');
+  // Escucho todos los "li" de búsquedas predefinidas.
+  const listPredefined = document.querySelectorAll('.js_header_link');
+  console.log('listPredefined: ', listPredefined);
+
+  for (const liElement of listPredefined) {
+    liElement.addEventListener('click', ApiUrlGenerator);
+  }
+}
+
+//
+// Pintar en pantalla.
 //
 function paintFun(ckt, swt) {
+  // ckt --> Array con los objetos a pintar.
+  // swt --> Conmutador que indica en qué lista se pinta:
+  // swt = 0 --> Buscados.
+  // swt = 1 --> Favoritos.
   console.log('Entra en paintFun');
   // console.log(ckt.length);
   console.log(ckt);
@@ -146,8 +204,6 @@ function paintFun(ckt, swt) {
     const dataStr = 'ckt';
     const drink = ckt[i];
     // console.log('-->', ckt[i]);
-
-    const esta = ckt[i].id;
 
     // Añado al "li" y al "i" el "id" del elemento (cóctel) del array, para poderlo identifcar y usar para su búsqueda posterior, y así comprobar si está en favoritos o no.
     // (id="${ckt[i].idDrink}").
@@ -215,6 +271,9 @@ function paintFun(ckt, swt) {
   listenCocktails();
 }
 
+//
+// Llama a la API y recoge los datos devueltos por la misma.
+//
 function callApi(callApiUrl) {
   // Hago la llamada a la API:
   fetch(callApiUrl)
@@ -229,6 +288,31 @@ function callApi(callApiUrl) {
 
 //
 //
+//
+function getRandonCocktails() {
+  console.log('Entra en getRandonCocktails');
+  let cocktail = '';
+
+  for (let i = 0; i < randonIni; i++) {
+    // Hago la llamada a la API:
+    fetch(randonURL)
+      .then((response) => response.json())
+      .then((data) => {
+        // Hay queponer el índice cero [0] siempre, porque la URL de randon solo devuelve un valor, el de la posición cero [0].
+        cocktailsRandon.push(data.drinks[0]);
+
+        // Llamo a la función que pinta las tarjetas.
+        paintFun(cocktailsRandon, 0);
+      });
+  }
+}
+
+//
+// Funciones manejadoras:
+//
+
+//
+// Crea la URL de búsqueda para la llamada a la API, con el valor del input.
 //
 function handleClickSearch(event) {
   console.log('Entra en handleClickSearch');
@@ -246,7 +330,10 @@ function handleClickSearch(event) {
 }
 
 //
-//
+// Resetea la búsqueda.
+// Borra las listas de cócteles.
+// Borra la lista de favoritos de localStorage.
+// Pinta de nuevo.
 //
 function handleClickReset() {
   cocktails = [];
@@ -257,7 +344,7 @@ function handleClickReset() {
 }
 
 //
-// Eventos.
+// EVENTOS.
 //
 btnSearch.addEventListener('click', handleClickSearch);
 btnReset.addEventListener('click', handleClickReset);
@@ -266,7 +353,5 @@ btnReset.addEventListener('click', handleClickReset);
 // AL CARGAR LA PÁGINA:
 //
 getLocalStorage();
-
-//
-// Pruebas.
-//
+getRandonCocktails();
+listenPredefinedList();
