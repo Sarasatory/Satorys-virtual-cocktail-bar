@@ -13,11 +13,13 @@ const btnReset = document.querySelector('.js_btn_reset');
 // Listados de HTML donde se pintan las listas de cócteles "Buscados" y "Favoritos".
 const listSearchCKT = document.querySelector('.js_list_search_CKT');
 const listFavoritesCKT = document.querySelector('.js_list_favorites_CKT');
+const listDrinkedCKT = document.querySelector('.js_list_drinked_CKT');
 
 //
 // CONSTANTES Y VARIABLES.
 //
 
+// URLS.
 const searchURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 const nonAlcoholicURL =
   'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic';
@@ -27,18 +29,23 @@ const mojitoURL =
   'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=mojito';
 const ginURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=gin';
 const randonURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+const grogURL = 'https://sarasatory.github.io/json-experiments/';
+
+// Generador de URL.
 let callApiUrl = '';
 
 // Número de elementos "randon" que aparecen al pintar la primera vez.
-let randonIni = 1;
+let randonIni = 5;
 
 // Arrays con las listas de cócteles "Buscados" y "Favoritos".
 let cocktails = [];
 let cocktailsFavorites = [];
+let cocktailsDrinked = [];
 
 // Creo un conmutador para decidir en qué lista hay que pintar.
 // swt = 0 --> Buscados.
 // swt = 1 --> Favoritos.
+// swt = 2 --> Bebidos.
 let swt = 0;
 
 //
@@ -51,9 +58,21 @@ let swt = 0;
 function setLocalStorage() {
   // Convierto a "string" el array de objetos de con los cócteles favoritos.
   const locStoCocktailsFavorites = JSON.stringify(cocktailsFavorites);
+  const locStoCocktailsDrinked = JSON.stringify(cocktailsDrinked);
 
-  // Lo guardo en localStorage.
-  localStorage.setItem('localFavoritesList', locStoCocktailsFavorites);
+  if (locStoCocktailsFavorites === '[null') {
+    locStoCocktailsFavorites = '';
+  } else {
+    // Lo guardo en localStorage.
+    localStorage.setItem('localFavoritesList', locStoCocktailsFavorites);
+  }
+
+  if (locStoCocktailsDrinked === '[null') {
+    locStoCocktailsDrinked = '';
+  } else {
+    // Lo guardo en localStorage.
+    localStorage.setItem('localDrinkedList', locStoCocktailsDrinked);
+  }
 }
 
 //
@@ -61,24 +80,52 @@ function setLocalStorage() {
 //
 function getLocalStorage() {
   console.log('Entro en gelLocalStorage');
-  // 1.- Meto en una variable lo que hay en localStorage.
-  let localFavoritesList = '';
-  const locStoCocktailsFavorites = localStorage.getItem('localFavoritesList');
-  console.log('Llego a locStoCocktailsFavorites');
-  // console.log('Valor de locStoCocktailsFavorites: ', locStoCocktailsFavorites);
+  console.log('AQUI');
 
-  // 2.- Compruebo si había datos guardados.
-  // Si no los había, la información devuelta por "localStorage.getItem()" será "null".
-  if (locStoCocktailsFavorites !== null && locStoCocktailsFavorites !== []) {
-    console.log('Entra en !== null');
-    // Si el valor devuelto no es "null", pinto las tarjetas de cócteles favoritos.
-    // Parseo la información recogida de localStorage y la guardo en una constante.
-    // Asigno esa constante a la variable "cocktailsFavorites".
-    // Llamo a la función que pinta la información y le paso la variable "cocktailsFavorites" como parámetro.
+  // Variables del localStorage (así se llaman en la memoria del navegador).
+  let localFavoritesList = '';
+  let localDrinkedList = '';
+
+  // 1.- Meto en una variable lo que hay en localStorage.
+  let locStoCocktailsFavorites = localStorage.getItem('localFavoritesList');
+  let locStoCocktailsDrinked = localStorage.getItem('localDrinkedList');
+
+  if (
+    locStoCocktailsFavorites === '[null]' ||
+    locStoCocktailsFavorites === [null] ||
+    locStoCocktailsFavorites === 'null' ||
+    locStoCocktailsFavorites === null
+  ) {
+    console.log('NULO - FAVORITES 1', locStoCocktailsFavorites);
+    locStoCocktailsFavorites = [];
+    console.log('NULO - FAVORITES 2', locStoCocktailsFavorites);
+  } else {
+    console.log('DISTINTO DE NULO - FAVORITES', locStoCocktailsFavorites);
+
     const parseLocStoCocFav = JSON.parse(locStoCocktailsFavorites);
     cocktailsFavorites = parseLocStoCocFav;
     paintFun(cocktailsFavorites, 1);
   }
+
+  if (
+    locStoCocktailsDrinked === '[null]' ||
+    locStoCocktailsDrinked === [null] ||
+    locStoCocktailsDrinked === 'null' ||
+    locStoCocktailsDrinked === null
+  ) {
+    console.log('NULO - DRINKED 1', locStoCocktailsDrinked);
+    locStoCocktailsDrinked = [];
+    console.log('NULO - DRINKED 2', locStoCocktailsDrinked);
+  } else {
+    console.log('DISTINTO DE NULO - DRINKED', locStoCocktailsDrinked);
+
+    const parseLocStoCocDri = JSON.parse(locStoCocktailsDrinked);
+    cocktailsDrinked = parseLocStoCocDri;
+    paintFun(cocktailsDrinked, 2);
+  }
+
+  console.log(localFavoritesList);
+  console.log(localDrinkedList);
 }
 
 //
@@ -89,47 +136,72 @@ function addRemoveFavorites(event) {
 
   // Identifico qué elemento de favoritos ha sido clickado mediante su "id".
   const cardClickedId = event.currentTarget.id;
-  console.log('ID: ', cardClickedId);
-  console.log('ID WWWWWWWWWWWWW--->: ', cardClickedId);
-
-  // Creo una constante donde almacenar el objeto que me devolverá ".find".
-  // Busco ese objeto en el array de elementos buscados, mediante su "id".
-  // Hago esto para poderlo añadir en caso de que no esté en la lista de favoritos ya.
-
-  // En caso de que el objeto no esté en la lista de favoritos, hay que meterlo, y en caso contrario, sacarlo.
-  // Para eso, primero hay que comprobar si está.
-  // Después, cogerlo en una variable
 
   const cocktailClicked = cocktails.find((element) => {
     return element.idDrink === cardClickedId;
   });
-  // Ya tengo guardado en "cocktailClicked" el objeto (cóctel) sobre el que he pinchado (en su corazón de favorio).
-  console.log('Objeto (cóctel) clickado: ', cocktailClicked);
 
   // Compruebo si el objeto está ya en el array de "favoritos".
   const itsFavoriteCkt = cocktailsFavorites.findIndex((elementFav) => {
     return elementFav.idDrink === cardClickedId;
   });
+
   // Ya tengo guardado en "itsFavoriteCkt" el índice del objeto (cóctel) que se corresponde con el que hemos pinchado.
   // Esto sirve para poderlo borrar en caso de que ya esté en el array de "favoritos".
-  console.log('Indice del elemento clickado: ', itsFavoriteCkt);
 
   // Averiguo si el objeto clickado ya estaba en favoritos.
   // En caso negativo, lo añado con ".push" (if).
   // En caso afirmativo, lo elimino con ".splice" (else).
   if (itsFavoriteCkt === -1) {
-    console.log('No estaba, ¡LO PONGO!');
+    // console.log('No estaba, ¡LO PONGO!');
     cocktailsFavorites.push(cocktailClicked);
+    console.log('PUSH: ', cocktailClicked);
+    console.log('Cocktails Favorites: ', cocktailsFavorites);
   } else {
-    console.log('Estaba, ¡LO QUITO!');
+    // console.log('Estaba, ¡LO QUITO!');
     cocktailsFavorites.splice(itsFavoriteCkt, 1);
   }
 
   setLocalStorage();
 
-  paintFun(cocktailsFavorites, 1);
   paintFun(cocktails, 0);
-  console.log(cocktailsFavorites);
+  paintFun(cocktailsFavorites, 1);
+  paintFun(cocktailsDrinked, 2);
+}
+
+//
+// Añade o elimina elementos de la lista de bebidos.
+//
+function addRemoveDrinked(event) {
+  console.log('Entra en addRemoveDrinked');
+
+  // Recojo el Id de la copita.
+  const cardClickedId = event.currentTarget.id;
+
+  // Recojo en una variable el elemento de "buscados" cuyo id coincide con el pinchado.
+  const cocktailClicked = cocktails.find((element) => {
+    return element.idDrink === cardClickedId;
+  });
+
+  // Compruebo si el elemento pinchado está ya en la lista de cócteles bebidos.
+  const itsDrinkedCkt = cocktailsDrinked.findIndex((elementDrink) => {
+    return elementDrink.idDrink === cardClickedId;
+  });
+  console.log('¡AQUÍ!');
+  console.log('¡AQUÍ!');
+  console.log(itsDrinkedCkt);
+
+  if (itsDrinkedCkt === -1) {
+    cocktailsDrinked.push(cocktailClicked);
+  } else {
+    cocktailsDrinked.splice(itsDrinkedCkt, 1);
+  }
+
+  setLocalStorage();
+
+  paintFun(cocktails, 0);
+  paintFun(cocktailsFavorites, 1);
+  paintFun(cocktailsDrinked, 2);
 }
 
 //
@@ -137,11 +209,25 @@ function addRemoveFavorites(event) {
 //
 function listenCocktails() {
   console.log('Entra en listenCocktails');
+
   // Escucho todos los iconos de corazón de las tarjetas pintadas.
   const listHearts = document.querySelectorAll('.js_icon_favorite');
 
   for (const heartElement of listHearts) {
     heartElement.addEventListener('click', addRemoveFavorites);
+  }
+}
+
+//
+// Escucha la lista de iconos de cóctel de los cóctles (Las copitas).
+//
+function listenDrinked() {
+  console.log('Entra en listenDrinked');
+  // Escucho todos los iconos de copita de las tarjetas pintadas.
+  const listGlasses = document.querySelectorAll('.js_icon_glass');
+
+  for (const glassElement of listGlasses) {
+    glassElement.addEventListener('click', addRemoveDrinked);
   }
 }
 
@@ -153,7 +239,7 @@ function ApiUrlGenerator(event) {
 
   // Identifico qué elemento de los "li" ha sido clickado mediante su "id".
   const liClickedId = event.currentTarget.id;
-  console.log('ID: ', liClickedId);
+  // console.log('ID: ', liClickedId);
 
   if (liClickedId === 'nonAlc') {
     callApiUrl = nonAlcoholicURL;
@@ -170,6 +256,9 @@ function ApiUrlGenerator(event) {
   if (liClickedId === 'ran') {
     callApiUrl = randonURL;
   }
+  if (liClickedId === 'grog') {
+    callApiUrl = grogURL;
+  }
   callApi(callApiUrl);
 }
 
@@ -180,7 +269,7 @@ function listenPredefinedList() {
   console.log('Entra en listenPredefinedList');
   // Escucho todos los "li" de búsquedas predefinidas.
   const listPredefined = document.querySelectorAll('.js_header_link');
-  console.log('listPredefined: ', listPredefined);
+  // console.log('listPredefined: ', listPredefined);
 
   for (const liElement of listPredefined) {
     liElement.addEventListener('click', ApiUrlGenerator);
@@ -191,87 +280,120 @@ function listenPredefinedList() {
 // Pintar en pantalla.
 //
 function paintFun(ckt, swt) {
-  console.log('MIERDA DE CKT', ckt);
-
   // ckt --> Array con los objetos a pintar.
   // swt --> Conmutador que indica en qué lista se pinta:
   // swt = 0 --> Buscados.
   // swt = 1 --> Favoritos.
-  console.log('Entra en paintFun');
-  // console.log(ckt.length);
-  console.log(ckt);
+  // swt = 2 --> Bebidos.
 
   let htmlToPaint = '';
 
   for (let i = 0; i < ckt.length; i++) {
-    const dataStr = 'ckt';
     const drink = ckt[i];
-    // console.log('-->', ckt[i]);
-
-    // Añado al "li" y al "i" el "id" del elemento (cóctel) del array, para poderlo identifcar y usar para su búsqueda posterior, y así comprobar si está en favoritos o no.
-    // (id="${ckt[i].idDrink}").
 
     // Compruebo si el objeto está ya en el array de "favoritos".
     const itsFavoriteCkt = cocktailsFavorites.findIndex((elementFav) => {
       return elementFav.idDrink === ckt[i].idDrink;
     });
 
+    // Compruebo si el objeto está ya en el array de "bebidos".
+    const itsDrinkedCkt = cocktailsDrinked.findIndex((elementDrink) => {
+      return elementDrink.idDrink === ckt[i].idDrink;
+    });
+
     let addFavoriteClass = '';
+    let addDrinkedClass = '';
     let heartStyle = 'fa-regular';
+    let glassStyle = 'fa-martini-glass-citrus';
 
     if (itsFavoriteCkt !== -1) {
       addFavoriteClass = 'favorite';
       heartStyle = 'fa-solid';
     }
 
+    if (itsDrinkedCkt !== -1) {
+      addDrinkedClass = 'drinked';
+      glassStyle = 'fa-martini-glass-empty';
+    }
+
+    // Imagen por defecto.
     const imgDrink = ckt[i].strDrinkThumb;
     if (ckt[i].strDrinkThumb === '') {
       const imgDrink = '../assets/images/grog001.jpg';
     }
 
-    htmlToPaint += `
-      <li class="cocktailCard js_cocktail_card ${addFavoriteClass}" id="${ckt[i].idDrink}">
-         <i class="cocktailCard__icon-favourite js_icon_favorite ${heartStyle} fa-heart" id="${ckt[i].idDrink}"></i>
-           <h3 class="cocktailCard__title">${ckt[i].strDrink}</h3>
-           <img
-             src="${imgDrink}"
-             alt="${ckt[i].strDrink}"
-             class="cocktailCard__img"
-           />
-           <p class="cocktailCard__alcoholic">${ckt[i].strAlcoholic}</p>
+    if (swt === 0) {
+      htmlToPaint += `
+        <li class="cocktailCard js_cocktail_card ${addFavoriteClass} ${addDrinkedClass}" id="${ckt[i].idDrink}">
+  
+           <i class="cocktailCard__icon-favourite js_icon_favorite ${heartStyle} fa-heart" id="${ckt[i].idDrink}"></i>
+  
+           <i class="cocktailCard__icon-glass js_icon_glass fa-solid ${glassStyle}" id="${ckt[i].idDrink}"></i>
+  
+          
+             <h3 class="cocktailCard__title">${ckt[i].strDrink}</h3>
+             <img
+               src="${imgDrink}"
+               alt="${ckt[i].strDrink}"
+               class="cocktailCard__img"
+             />
+             <p class="cocktailCard__alcoholic">${ckt[i].strAlcoholic}</p>
+  
+             <p class="cocktailCard__ingredients">Ingredientes:</p>
+  
+             <ol class="cocktailCard__list-ingredients">`;
 
-           <p class="cocktailCard__ingredients">Ingredientes:</p>
-
-           <ol class="cocktailCard__list-ingredients">`;
-
-    // Pinto los ingredientes de cada cóctel.
-    for (let index = 1; index < 16; index++) {
-      const ingredient = 'strIngredient'.concat(index);
-      // Compruebo que el valor devuelto por el ingrediente no sea "null" ni vacio.
-      if (
-        drink[ingredient] !== null &&
-        drink[ingredient] !== '' &&
-        drink[ingredient] !== undefined
-      ) {
-        // console.log('DRINK INGREDIENT: ', drink[ingredient]);
-        htmlToPaint += `<li class="cocktailCard__list-ingredients__li">${drink[ingredient]}</li>`;
+      // Pinto los ingredientes de cada cóctel.
+      for (let index = 1; index < 16; index++) {
+        const ingredient = 'strIngredient'.concat(index);
+        // Compruebo que el valor devuelto por el ingrediente no sea "null" ni vacio.
+        if (
+          drink[ingredient] !== null &&
+          drink[ingredient] !== '' &&
+          drink[ingredient] !== undefined
+        ) {
+          // console.log('DRINK INGREDIENT: ', drink[ingredient]);
+          htmlToPaint += `<li class="cocktailCard__list-ingredients__li">${drink[ingredient]}</li>`;
+        }
       }
+
+      htmlToPaint += `</ol></li>`;
+    } else {
+      htmlToPaint += `
+              <li class="cocktailCard js_cocktail_card ${addFavoriteClass} ${addDrinkedClass}" id="${ckt[i].idDrink}">
+        
+                 <i class="cocktailCard__icon-favourite js_icon_favorite ${heartStyle} fa-heart" id="${ckt[i].idDrink}"></i>
+        
+                 <i class="cocktailCard__icon-glass js_icon_glass fa-solid ${glassStyle}" id="${ckt[i].idDrink}"></i>
+        
+                
+                   <h3 class="cocktailCard__title">${ckt[i].strDrink}</h3>
+                   <img
+                     src="${imgDrink}"
+                     alt="${ckt[i].strDrink}"
+                     class="cocktailCard__img"
+                   />
+                   <p class="cocktailCard__alcoholic">${ckt[i].strAlcoholic}</p></li>`;
     }
-    htmlToPaint += `</ol></li>`;
   }
 
   if (swt === 0) {
     console.log('Entra en pintar cocktails buscados');
     listSearchCKT.innerHTML = 'Buscados';
     listSearchCKT.innerHTML += htmlToPaint;
-  } else {
+  } else if (swt === 1) {
     console.log('Entra en pintar cocktails favorites');
     listFavoritesCKT.innerHTML = 'Favoritos';
     listFavoritesCKT.innerHTML += htmlToPaint;
+  } else {
+    console.log('Entra en pintar cocktails bebidos');
+    listDrinkedCKT.innerHTML = 'Bebidos';
+    listDrinkedCKT.innerHTML += htmlToPaint;
   }
 
   // Después de pintar, escucho de nuevo las listas.
   listenCocktails();
+  listenDrinked();
 }
 
 //
@@ -295,7 +417,7 @@ function callApi(callApiUrl) {
 function getRandonCocktails() {
   console.log('Entra en getRandonCocktails');
 
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < randonIni; i++) {
     // Hago la llamada a la API:
     fetch(randonURL)
       .then((response) => response.json())
@@ -305,7 +427,7 @@ function getRandonCocktails() {
 
         // Llamo a la función que pinta las tarjetas.
         paintFun(cocktails, 0);
-        console.log('data.drinks[0] MMMM--->', data.drinks[0]);
+        // console.log('data.drinks[0] MMMM--->', data.drinks[0]);
       });
   }
 }
@@ -318,7 +440,7 @@ function getRandonCocktails() {
 // Crea la URL de búsqueda para la llamada a la API, con el valor del input.
 //
 function handleClickSearch(event) {
-  console.log('Entra en handleClickSearch');
+  // console.log('Entra en handleClickSearch');
   event.preventDefault();
 
   // Creo una variable y en ella meto el valor del input de búsqueda.
@@ -336,15 +458,17 @@ function handleClickSearch(event) {
 // Resetea la búsqueda.
 // Borra las listas de cócteles.
 // Borra la lista de favoritos de localStorage.
-// Pinta de nuevo.
+// Pinta de nuevo los cócteles aleatorios.
 //
 function handleClickReset() {
   cocktails = [];
   cocktailsFavorites = [];
+  cocktailsDrinked = [];
 
   setLocalStorage();
   paintFun(cocktails, 0);
   paintFun(cocktailsFavorites, 1);
+  paintFun(cocktailsDrinked, 2);
   getRandonCocktails();
 }
 
@@ -353,6 +477,16 @@ function handleClickReset() {
 //
 btnSearch.addEventListener('click', handleClickSearch);
 btnReset.addEventListener('click', handleClickReset);
+
+// Realiza la búsqueda de los cócteles por nombre mientras se escribe.
+inputSearch.addEventListener('keyup', handleClickSearch);
+
+// Previene el comportamiento por defecto de la tecla "Intro".
+inputSearch.addEventListener('keypress', (e) => {
+  if (e.keyCode == 13) {
+    e.preventDefault();
+  }
+});
 
 //
 // AL CARGAR LA PÁGINA:

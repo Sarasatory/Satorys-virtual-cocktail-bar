@@ -364,6 +364,14 @@ button {
     color: red; }
     .cocktailCard__icon-favourite:hover {
       cursor: pointer; }
+  .cocktailCard__icon-glass {
+    position: absolute;
+    top: 10rem;
+    right: 40rem;
+    font-size: 20rem;
+    color: red; }
+    .cocktailCard__icon-glass:hover {
+      cursor: pointer; }
   .cocktailCard__title {
     font-size: 20rem;
     margin-bottom: 10rem; }
