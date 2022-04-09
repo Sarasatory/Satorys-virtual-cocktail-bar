@@ -30,12 +30,11 @@ const randonURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 let callApiUrl = '';
 
 // Número de elementos "randon" que aparecen al pintar la primera vez.
-let randonIni = 5;
+let randonIni = 1;
 
 // Arrays con las listas de cócteles "Buscados" y "Favoritos".
 let cocktails = [];
 let cocktailsFavorites = [];
-let cocktailsRandon = [];
 
 // Creo un conmutador para decidir en qué lista hay que pintar.
 // swt = 0 --> Buscados.
@@ -70,7 +69,8 @@ function getLocalStorage() {
 
   // 2.- Compruebo si había datos guardados.
   // Si no los había, la información devuelta por "localStorage.getItem()" será "null".
-  if (locStoCocktailsFavorites !== null) {
+  if (locStoCocktailsFavorites !== null && locStoCocktailsFavorites !== []) {
+    console.log('Entra en !== null');
     // Si el valor devuelto no es "null", pinto las tarjetas de cócteles favoritos.
     // Parseo la información recogida de localStorage y la guardo en una constante.
     // Asigno esa constante a la variable "cocktailsFavorites".
@@ -90,6 +90,7 @@ function addRemoveFavorites(event) {
   // Identifico qué elemento de favoritos ha sido clickado mediante su "id".
   const cardClickedId = event.currentTarget.id;
   console.log('ID: ', cardClickedId);
+  console.log('ID WWWWWWWWWWWWW--->: ', cardClickedId);
 
   // Creo una constante donde almacenar el objeto que me devolverá ".find".
   // Busco ese objeto en el array de elementos buscados, mediante su "id".
@@ -190,6 +191,8 @@ function listenPredefinedList() {
 // Pintar en pantalla.
 //
 function paintFun(ckt, swt) {
+  console.log('MIERDA DE CKT', ckt);
+
   // ckt --> Array con los objetos a pintar.
   // swt --> Conmutador que indica en qué lista se pinta:
   // swt = 0 --> Buscados.
@@ -291,18 +294,18 @@ function callApi(callApiUrl) {
 //
 function getRandonCocktails() {
   console.log('Entra en getRandonCocktails');
-  let cocktail = '';
 
-  for (let i = 0; i < randonIni; i++) {
+  for (let i = 0; i < 2; i++) {
     // Hago la llamada a la API:
     fetch(randonURL)
       .then((response) => response.json())
       .then((data) => {
         // Hay queponer el índice cero [0] siempre, porque la URL de randon solo devuelve un valor, el de la posición cero [0].
-        cocktailsRandon.push(data.drinks[0]);
+        cocktails.push(data.drinks[0]);
 
         // Llamo a la función que pinta las tarjetas.
-        paintFun(cocktailsRandon, 0);
+        paintFun(cocktails, 0);
+        console.log('data.drinks[0] MMMM--->', data.drinks[0]);
       });
   }
 }
@@ -338,9 +341,11 @@ function handleClickSearch(event) {
 function handleClickReset() {
   cocktails = [];
   cocktailsFavorites = [];
+
   setLocalStorage();
   paintFun(cocktails, 0);
   paintFun(cocktailsFavorites, 1);
+  getRandonCocktails();
 }
 
 //
