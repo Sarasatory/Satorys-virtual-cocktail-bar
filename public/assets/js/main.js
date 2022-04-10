@@ -357,7 +357,7 @@ function paintFun(ckt, swt) {
     htmlToPaint += `<div class="constructor--${way}__card__img__iconDri js_icon_glass" id="${ckt[i].idDrink}">`;
     htmlToPaint += `</div>`;
     htmlToPaint += `</div>`;
-    htmlToPaint += `<h5 class="constructor--${way}__card__title title--h5">${ckt[i].strDrink} - ${ckt[i].idDrink}</h5>`;
+    htmlToPaint += `<h5 class="constructor--${way}__card__title title--h5">${ckt[i].strDrink}</h5>`;
 
     // Pinto los ingredientes de cada cóctel, pero solo si "swt" es "0" o "3" (Buscados o Aleatorios).
 
