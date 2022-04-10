@@ -1,19 +1,42 @@
-// .button {
-//   padding: 12rem 24rem;
+.button {
+  width: 130rem;
+  height: 60rem;
 
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-//   font-size: 16rem;
-//   font-weight: $semi_bold;
-//   line-height: 24rem;
+  font-size: 16rem;
+  font-weight: $fw-semi-bold;
+  line-height: 20rem;
 
-//   border: none;
-// }
-// .button:hover {
-//   cursor: pointer;
-// }
+  border-radius: 16rem;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button--reset {
+  color: $col_black;
+  background-color: $col_bcg_btn_reset;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $col_bcg_btn_reset_hover;
+  }
+}
+
+.button--search {
+  color: $col_white;
+  background-color: $col_bcg_btn_search;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $col_bcg_btn_search_hover;
+  }
+}
 
 // //
 

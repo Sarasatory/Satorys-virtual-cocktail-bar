@@ -1,0 +1,33 @@
+//  <div class="constructor--${way}__card ${addFavoriteClass} ${addDrinkedClass}" id="${ckt[i].idDrink}>
+//         <div
+//           class="constructor--${way}__card__img"
+//           style="background-image: url(${imgDrink})"
+//         >
+//           <div class="constructor--${way}__card__img__iconFav js_icon_favorite" id="${ckt[i].idDrink}></div>
+//           <div class="constructor--${way}__card__img__iconDri js_icon_glass" id="${ckt[i].idDrink}></div>
+//         </div>
+//         <h5 class="constructor--${way}__card__title title--h5">
+//           ${ckt[i].strDrink}
+//         </h5>
+
+//         <p class="constructor--${way}__card__ingredients-text">Ingredientes:</p>
+//         <ul class="constructor--${way}__card__ingredients-ul">`;
+//     // Pinto los ingredientes de cada cóctel.
+//     for (let index = 1; index < 16; index++) {
+//       const ingredient = 'strIngredient'.concat(index);
+//       // Compruebo que el valor devuelto por el ingrediente no sea "null" ni vacio.
+//       if (
+//         drink[ingredient] !== null &&
+//         drink[ingredient] !== '' &&
+//         drink[ingredient] !== undefined
+//       ) {
+//         // console.log('DRINK INGREDIENT: ', drink[ingredient]);
+//         htmlToPaint += `<li class="constructor--${way}__card__ingredients-li">${drink[ingredient]}</li>`;
+//       }
+//     }
+//     `         <div class="constructor--${way}__card__cont-label">
+//           <p class="constructor--${way}__card__cont-label__label">
+//             ${ckt[i].strAlcoholic}
+//           </p>
+//         </div>
+//       </div>

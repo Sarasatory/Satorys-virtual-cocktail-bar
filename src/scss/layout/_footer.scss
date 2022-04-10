@@ -1,0 +1,8 @@
+.footer {
+  @media (min-width: $break_point_tablet) {
+    max-width: $max-width-tablet;
+  }
+  @media (min-width: $break_point_desktop) {
+    max-width: $max-width-desktop;
+  }
+}

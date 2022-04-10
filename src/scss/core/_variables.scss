@@ -1,10 +1,24 @@
 // FONTS
-$font_inter: 'Inter', sans-serif;
-$font_lobster: 'Lobster', cursive;
+$font_page: 'Inter', sans-serif;
+$font_logo: 'Lobster', cursive;
+
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi-bold: 600;
 
 // COLORS
 $col_black: #000;
+$col_black_01: rgba(0, 0, 0, 0.1);
 $col_white: #fff;
+$col_red: #ff6363;
+$col_purple_07: rgba(124, 85, 205, 0.7);
+$col_blue_07: rgba(56, 151, 240, 0.7);
+
+$col_bcg_btn_reset: #e7fafe;
+$col_bcg_btn_reset_hover: #d0f7ff;
+$col_bcg_btn_search: #333;
+$col_bcg_btn_search_hover: #000;
 
 // SIZES
 $break_point_tablet: 480px;

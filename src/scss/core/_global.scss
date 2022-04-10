@@ -1,0 +1,65 @@
+.body {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  //   background-color: bisque;
+
+  color: $col_black;
+  font-family: $font_page;
+}
+
+.title--h1 {
+  font-size: 30rem;
+  font-weight: $fw-semi-bold;
+  line-height: 44rem;
+
+  @media (min-width: $break_point_tablet) {
+    font-size: 40rem;
+    line-height: 44rem;
+  }
+  @media (min-width: $break_point_desktop) {
+    font-size: 48rem;
+    line-height: 52rem;
+  }
+}
+
+.title--h2 {
+  font-size: 26rem;
+  font-weight: $fw-semi-bold;
+  line-height: 40rem;
+
+  @media (min-width: $break_point_tablet) {
+    font-size: 36rem;
+    line-height: 40rem;
+  }
+  @media (min-width: $break_point_desktop) {
+    font-size: 44rem;
+    line-height: 48rem;
+  }
+}
+
+.title--h4 {
+  font-size: 20rem;
+  font-weight: $fw-semi-bold;
+  line-height: 24rem;
+
+  @media (min-width: $break_point_tablet) {
+    font-size: 24rem;
+    line-height: 28rem;
+  }
+}
+
+.title--h5 {
+  font-size: 18rem;
+  font-weight: $fw-semi-bold;
+  line-height: 22rem;
+
+  @media (min-width: $break_point_tablet) {
+    font-size: 22rem;
+    line-height: 26rem;
+  }
+}
