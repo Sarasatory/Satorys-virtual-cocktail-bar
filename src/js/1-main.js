@@ -322,8 +322,11 @@ function paintFun(ckt, swt) {
       const imgDrink = '../assets/images/grog001.jpg';
     }
 
-    if (swt === 0) {
-      htmlToPaint += `
+    // if (swt === 0) {}else{} ^^
+    //
+    // PUEDO HACER UN CONDICIONAL CON "swt" QUE AÑADA O QUITE CLASES A LA HORA DE PINTAR PARA DETERMINAR EL TIPO DE TARJETA Y SU APARIENCIA.
+    //
+    htmlToPaint += `
         <li class="cocktailCard js_cocktail_card ${addFavoriteClass} ${addDrinkedClass}" id="${ckt[i].idDrink}">
   
            <i class="cocktailCard__icon-favourite js_icon_favorite ${heartStyle} fa-heart" id="${ckt[i].idDrink}"></i>
@@ -343,38 +346,21 @@ function paintFun(ckt, swt) {
   
              <ol class="cocktailCard__list-ingredients">`;
 
-      // Pinto los ingredientes de cada cóctel.
-      for (let index = 1; index < 16; index++) {
-        const ingredient = 'strIngredient'.concat(index);
-        // Compruebo que el valor devuelto por el ingrediente no sea "null" ni vacio.
-        if (
-          drink[ingredient] !== null &&
-          drink[ingredient] !== '' &&
-          drink[ingredient] !== undefined
-        ) {
-          // console.log('DRINK INGREDIENT: ', drink[ingredient]);
-          htmlToPaint += `<li class="cocktailCard__list-ingredients__li">${drink[ingredient]}</li>`;
-        }
+    // Pinto los ingredientes de cada cóctel.
+    for (let index = 1; index < 16; index++) {
+      const ingredient = 'strIngredient'.concat(index);
+      // Compruebo que el valor devuelto por el ingrediente no sea "null" ni vacio.
+      if (
+        drink[ingredient] !== null &&
+        drink[ingredient] !== '' &&
+        drink[ingredient] !== undefined
+      ) {
+        // console.log('DRINK INGREDIENT: ', drink[ingredient]);
+        htmlToPaint += `<li class="cocktailCard__list-ingredients__li">${drink[ingredient]}</li>`;
       }
-
-      htmlToPaint += `</ol></li>`;
-    } else {
-      htmlToPaint += `
-              <li class="cocktailCard js_cocktail_card ${addFavoriteClass} ${addDrinkedClass}" id="${ckt[i].idDrink}">
-        
-                 <i class="cocktailCard__icon-favourite js_icon_favorite ${heartStyle} fa-heart" id="${ckt[i].idDrink}"></i>
-        
-                 <i class="cocktailCard__icon-glass js_icon_glass fa-solid ${glassStyle}" id="${ckt[i].idDrink}"></i>
-        
-                
-                   <h3 class="cocktailCard__title">${ckt[i].strDrink}</h3>
-                   <img
-                     src="${imgDrink}"
-                     alt="${ckt[i].strDrink}"
-                     class="cocktailCard__img"
-                   />
-                   <p class="cocktailCard__alcoholic">${ckt[i].strAlcoholic}</p></li>`;
     }
+
+    htmlToPaint += `</ol></li>`;
   }
 
   if (swt === 0) {
