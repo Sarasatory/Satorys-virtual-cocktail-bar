@@ -1,0 +1,546 @@
+.main {
+  width: 100%;
+  margin: 0 40rem;
+  padding: 15rem 0rem;
+  text-align: center;
+
+  @media (min-width: $break_point_tablet) {
+    padding: 30rem 0rem;
+    max-width: $max-width-tablet;
+  }
+  @media (min-width: $break_point_desktop) {
+    padding: 45rem 30rem;
+    max-width: $max-width-desktop;
+  }
+
+  &__title {
+    margin-bottom: 30rem;
+
+    @media (min-width: $break_point_tablet) {
+      margin-bottom: 45rem;
+    }
+    @media (min-width: $break_point_desktop) {
+      margin-bottom: 60rem;
+    }
+  }
+}
+
+.favorites {
+  width: 100%;
+  margin-bottom: 30rem;
+
+  @media (min-width: $break_point_tablet) {
+  }
+  @media (min-width: $break_point_desktop) {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  &__cont-title {
+    width: 100%;
+    padding: 0 20rem;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__img {
+      width: 40rem;
+      height: 40rem;
+      margin-right: 10rem;
+
+      transform: translatey(3rem);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      // background-color: aqua;
+
+      background-image: url(../images/heart-color.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+
+      @media (min-width: $break_point_tablet) {
+        width: 40rem;
+        height: 40rem;
+        padding: 0 30rem;
+      }
+      @media (min-width: $break_point_desktop) {
+        width: 50rem;
+        height: 50rem;
+        padding: 0 40rem;
+
+        transform: translatey(4rem);
+      }
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__chevron {
+      display: none;
+      @media (min-width: $break_point_tablet) {
+      }
+      @media (min-width: $break_point_desktop) {
+        display: inline-block;
+
+        position: absolute;
+        // top: 15rem;
+        right: 40rem;
+
+        font-size: 20rem;
+      }
+    }
+  }
+}
+
+.drinked {
+  width: 100%;
+  margin-bottom: 30rem;
+
+  @media (min-width: $break_point_tablet) {
+  }
+  @media (min-width: $break_point_desktop) {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  &__cont-title {
+    width: 100%;
+    padding: 0 20rem;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__img {
+      width: 40rem;
+      height: 40rem;
+      margin-right: 10rem;
+
+      transform: translatey(3rem);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      // background-color: aqua;
+
+      background-image: url(../images/cocktail-color.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+
+      @media (min-width: $break_point_tablet) {
+        width: 40rem;
+        height: 40rem;
+        padding: 0 30rem;
+      }
+      @media (min-width: $break_point_desktop) {
+        width: 50rem;
+        height: 50rem;
+        padding: 0 40rem;
+
+        transform: translatey(4rem);
+      }
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__chevron {
+      display: none;
+      @media (min-width: $break_point_tablet) {
+      }
+      @media (min-width: $break_point_desktop) {
+        display: inline-block;
+
+        position: absolute;
+        // top: 15rem;
+        right: 40rem;
+
+        font-size: 20rem;
+      }
+    }
+  }
+}
+
+.constructor--favDri {
+  width: auto;
+  height: 300rem;
+
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  @media (min-width: $break_point_tablet) {
+  }
+  @media (min-width: $break_point_desktop) {
+  }
+
+  // TARJETAS.
+  &__card {
+    width: 220rem;
+    height: 290rem;
+    padding: 10rem;
+    margin: 0 10rem;
+
+    display: inline-block;
+
+    background: linear-gradient(
+      180deg,
+      rgba(231, 249, 253, 0) 0%,
+      #e7f9fd 100%
+    );
+    border-radius: 30rem;
+
+    @media (min-width: $break_point_tablet) {
+    }
+    @media (min-width: $break_point_desktop) {
+    }
+
+    &__img {
+      width: 100%;
+      height: 130rem;
+      margin-bottom: 20rem;
+
+      position: relative;
+
+      // background-image: url(../images/grog002.jpeg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 30rem;
+
+      &__iconFav {
+        min-width: 140rem;
+        height: 50rem;
+
+        position: absolute;
+        top: 5rem;
+        right: 0;
+
+        background-image: url(../images/heart-color-centered.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top right;
+
+        &:hover {
+          cursor: pointer;
+
+          // background-image: url(../images/heart-grey-open.svg);
+          // background-repeat: no-repeat;
+          // background-size: cover;
+          // background-position: top right;
+        }
+      }
+      &__iconDri {
+        min-width: 140rem;
+        height: 50rem;
+
+        position: absolute;
+        bottom: 5rem;
+        right: 0;
+
+        background-image: url(../images/cocktail-color-centered.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top right;
+
+        &:hover {
+          cursor: pointer;
+
+          // background-image: url(../images/heart-grey-open.svg);
+          // background-repeat: no-repeat;
+          // background-size: cover;
+          // background-position: top right;
+        }
+      }
+    }
+
+    &__title {
+      width: 200rem;
+      max-width: 200rem;
+      max-height: 60rem;
+      margin-bottom: 20rem;
+
+      white-space: normal;
+
+      text-align: left;
+
+      overflow: hidden;
+    }
+
+    &__cont-label {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      &__label {
+        width: 140rem;
+        height: 40rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $col_white;
+        font-size: 16rem;
+        font-weight: $fw-medium;
+
+        background-color: $col_purple_07;
+        border-radius: 20rem;
+      }
+    }
+  }
+}
+
+.search {
+  width: 100%;
+  padding: 0 20rem;
+
+  align-items: center;
+
+  &__title {
+    margin-bottom: 60rem;
+  }
+}
+
+.constructor--seaRan {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30rem;
+
+  @media (min-width: $break_point_tablet) {
+  }
+  @media (min-width: $break_point_desktop) {
+  }
+
+  // TARJETAS.
+  &__card {
+    min-height: 550rem;
+    padding: 10rem;
+
+    display: inline-block;
+
+    text-align: left;
+    background: linear-gradient(
+      180deg,
+      rgba(231, 249, 253, 0) 0%,
+      #e7f9fd 100%
+    );
+    border-radius: 30rem;
+
+    @media (min-width: $break_point_tablet) {
+    }
+    @media (min-width: $break_point_desktop) {
+    }
+
+    &__img {
+      width: 100%;
+      height: 250rem;
+      margin-bottom: 20rem;
+
+      position: relative;
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 30rem;
+      &__iconFav {
+        min-width: 160rem;
+        height: 60rem;
+
+        position: absolute;
+        top: 5rem;
+        right: 1rem;
+
+        background-image: url(../images/heart-color-centered.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top right;
+
+        &:hover {
+          cursor: pointer;
+
+          // background-image: url(../images/heart-grey-open.svg);
+          // background-repeat: no-repeat;
+          // background-size: cover;
+          // background-position: top right;
+        }
+      }
+      &__iconDri {
+        min-width: 160rem;
+        height: 60rem;
+
+        position: absolute;
+        bottom: 5rem;
+        right: 1rem;
+
+        background-image: url(../images/cocktail-color-centered.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top right;
+
+        &:hover {
+          cursor: pointer;
+
+          // background-image: url(../images/heart-grey-open.svg);
+          // background-repeat: no-repeat;
+          // background-size: cover;
+          // background-position: top right;
+        }
+      }
+    }
+
+    &__title {
+      max-height: 60rem;
+      margin-bottom: 20rem;
+
+      white-space: normal;
+
+      text-align: left;
+
+      overflow: hidden;
+    }
+
+    &__ingredients-text {
+      margin-bottom: 10rem;
+
+      font-size: 16rem;
+      font-weight: $fw-semi-bold;
+      line-height: 20rem;
+    }
+
+    &__ingredients-ul {
+      margin: 0 0 20rem 10rem;
+
+      font-size: 16rem;
+      font-weight: $fw-semi-bold;
+      line-height: 20rem;
+    }
+
+    &__cont-label {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      &__label {
+        width: 140rem;
+        height: 40rem;
+        margin: 0 30rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: $col_white;
+        font-size: 16rem;
+        font-weight: $fw-medium;
+
+        background-color: $col_purple_07;
+        border-radius: 20rem;
+      }
+    }
+  }
+}
+
+//
+//
+//
+//
+//
+
+//
+//
+//
+//
+//
+
+.resultsCKT-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.cocktailCard {
+  width: 310rem;
+  padding: 30rem;
+  margin-bottom: 20rem;
+
+  position: relative;
+
+  background-color: beige;
+  border-radius: 10rem;
+
+  &__icon-favourite {
+    position: absolute;
+    top: 10rem;
+    right: 10rem;
+
+    font-size: 20rem;
+
+    color: red;
+
+    // CAMBIAR "fa-regular" por "fa-solid" al meter en favoritos.
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon-glass {
+    position: absolute;
+    top: 10rem;
+    right: 40rem;
+
+    font-size: 20rem;
+
+    color: red;
+
+    // CAMBIAR "fa-regular" por "fa-solid" al meter en favoritos.
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    font-size: 20rem;
+    margin-bottom: 10rem;
+  }
+
+  &__img {
+    width: 250rem;
+    height: 250rem;
+    margin-bottom: 10rem;
+  }
+
+  &__alcoholic {
+    text-align: right;
+    font-size: 14rem;
+  }
+
+  &__ingredients {
+    text-transform: uppercase;
+    margin-bottom: 10rem;
+  }
+  &__list-ingredients {
+    &__li {
+      margin-left: 30rem;
+    }
+  }
+}
