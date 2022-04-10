@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&family=Lobster&display=swap"
       rel="stylesheet"
     />
 
@@ -26,23 +26,26 @@
     <title>Módulo 2 - Evaluación final - Satory</title>
   </head>
   <body>
+    <header class="header">
+      <a href="#" class="header__logo">Satory's</a>
+
+      <button class="button button--ghost">Reset</button>
+
+    </header>
+
+
     <main class="main">
-      <h1 class="title-h1">Módulo 2 - Evaluación final - Satory</h1>
+      <h1 class="title-h1">Cócteles del mundo</h1>
 
       <!-- <section class="randonCKT"></section> -->
       <!--  -->
       <!--  -->
       <section class="searchCKT">
         <ul>
-          <li class="js_header_link js_link_nonAlcoholic" id="nonAlc">
-            Sin alcohol
-          </li>
           <li class="js_header_link js_link_margarita" id="mar">Margaritas</li>
           <li class="js_header_link js_link_mojito" id="moj">Mojitos</li>
           <li class="js_header_link js_link_gin" id="gin">Gins</li>
-          <li class="js_header_link js_link_randon" id="ran">
-            Cóctel aleatorio
-          </li>
+          <li class="js_header_link js_link_randon" id="ran">Cóctel aleatorio</li>
         </ul>
         <form action="">
           <label for="inputForm">Búsqueda:</label>
@@ -53,6 +56,7 @@
         </form>
       </section>
       <!--  -->
+
       <!--  -->
       <section class="resultsCKT">
         <h2 class="title-h2">Cócteles</h2>
@@ -86,6 +90,9 @@
         </div>
       </section>
     </main>
+
+    
+
     <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>
 </html>

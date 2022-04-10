@@ -340,6 +340,23 @@ button {
   box-shadow: none; }
 
 /* END OF RESET STYLES */
+.contenedorH {
+  width: auto;
+  height: 300rem;
+  background-color: azure;
+  border: 1px solid black;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap; }
+
+.tarjetaH {
+  width: 200rem;
+  height: 260rem;
+  margin: 10rem;
+  background-color: antiquewhite;
+  border-radius: 5rem;
+  display: inline-block; }
+
 .main {
   padding: 30rem; }
 

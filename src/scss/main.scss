@@ -1,9 +1,17 @@
 @import 'core/variables';
 @import 'core/normalize';
 @import 'core/reset';
+@import 'core/global';
+@import 'core/pruebas';
+
+@import 'components/components';
+
 // @import 'components/code';
 // @import 'components/links';
 // @import 'layout/page';
 // @import 'layout/header';
 // @import 'layout/footer';
+
 @import 'pages/index';
+
+@import 'core/js-styles';
