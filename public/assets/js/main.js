@@ -96,9 +96,7 @@ function getLocalStorage() {
   } else {
     const parseLocStoCocFav = JSON.parse(locStoCocktailsFavorites);
     cocktailsFavorites = parseLocStoCocFav;
-    paintFun(cocktails, 0);
     paintFun(cocktailsFavorites, 1);
-    paintFun(cocktailsDrinked, 2);
   }
 
   if (
@@ -113,8 +111,6 @@ function getLocalStorage() {
   } else {
     const parseLocStoCocDri = JSON.parse(locStoCocktailsDrinked);
     cocktailsDrinked = parseLocStoCocDri;
-    paintFun(cocktails, 0);
-    paintFun(cocktailsFavorites, 1);
     paintFun(cocktailsDrinked, 2);
   }
 }
@@ -395,8 +391,6 @@ function callApi(callApiUrl) {
 
       // Llamo a la función que pinta las tarjetas.
       paintFun(cocktails, 0);
-      paintFun(cocktailsFavorites, 1);
-      paintFun(cocktailsDrinked, 2);
     });
 }
 
@@ -465,8 +459,6 @@ function getRandonCocktails() {
 
         if (cocktails.length === randonIni) {
           paintFun(cocktails, 0);
-          paintFun(cocktailsFavorites, 1);
-          paintFun(cocktailsDrinked, 2);
         }
       });
 
