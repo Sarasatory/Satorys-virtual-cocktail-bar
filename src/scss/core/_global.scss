@@ -42,6 +42,21 @@
   }
 }
 
+.title--h3 {
+  font-size: 28rem;
+  font-weight: $fw-semi-bold;
+  line-height: 32rem;
+
+  @media (min-width: $break_point_tablet) {
+    font-size: 32rem;
+    line-height: 36rem;
+  }
+  @media (min-width: $break_point_desktop) {
+    font-size: 36rem;
+    line-height: 40rem;
+  }
+}
+
 .title--h4 {
   font-size: 20rem;
   font-weight: $fw-semi-bold;
@@ -60,6 +75,17 @@
 
   @media (min-width: $break_point_tablet) {
     font-size: 22rem;
+    line-height: 26rem;
+  }
+}
+
+.title--h6 {
+  font-size: 16rem;
+  font-weight: $fw-semi-bold;
+  line-height: 22rem;
+
+  @media (min-width: $break_point_tablet) {
+    font-size: 20rem;
     line-height: 26rem;
   }
 }

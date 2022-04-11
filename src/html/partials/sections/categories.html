@@ -1,0 +1,55 @@
+<section class="categories">
+  <h3 class="categories__title title--h3">Categorías</h3>
+
+  <div class="categories__cont">
+    <div
+      class="categories__cont__categorie typeCktMar js_header_link js_link_margarita"
+      id="mar"
+    >
+      <div class="typeCktMar__img"></div>
+      <h6 class="categories__cont__categorie__title title--h6">Margaritas</h6>
+    </div>
+    <div
+      class="categories__cont__categorie typeCktMoj js_header_link js_link_mojito"
+      id="moj"
+    >
+      <div class="typeCktMoj__img"></div>
+      <h6 class="categories__cont__categorie__title title--h6">Mojitos</h6>
+    </div>
+    <div
+      class="categories__cont__categorie typeCktGin js_header_link js_link_gin"
+      id="gin"
+    >
+      <div class="typeCktGin__img"></div>
+      <h6 class="categories__cont__categorie__title title--h6">Gins</h6>
+    </div>
+    <div
+      class="categories__cont__categorie typeCktRan js_header_link js_link_randon"
+      id="ran"
+    >
+      <div class="typeCktRan__img"></div>
+      <h6 class="categories__cont__categorie__title title--h6">
+        Cóctel aleatorio
+      </h6>
+    </div>
+  </div>
+
+  <form class="categories__form">
+    <div class="categories__form__search-icon"></div>
+    <input
+      type="text"
+      name=""
+      placeholder="Encuentra tu cocktail preferido"
+      id="inputForm"
+      class="categories__form__input-search js_input_search"
+    />
+
+    <include
+      src="../components/button.html"
+      js_button_type="js_btn_search"
+      button_text="Buscar"
+      button_type="button--search"
+    ></include>
+    <!-- <input type="button" value="Buscar" class="js_btn_search" /> -->
+  </form>
+</section>

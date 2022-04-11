@@ -1,0 +1,76 @@
+.favorites {
+  width: 100%;
+  margin-bottom: 30rem;
+
+  @media (min-width: $break_point_tablet) {
+  }
+  @media (min-width: $break_point_desktop) {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+  }
+
+  &__cont-title {
+    width: 100%;
+    padding: 0 20rem;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &__img {
+      width: 40rem;
+      height: 40rem;
+      margin-right: 10rem;
+
+      transform: translatey(3rem);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      // background-color: aqua;
+
+      background-image: url(../images/heart-color.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+
+      @media (min-width: $break_point_tablet) {
+        width: 40rem;
+        height: 40rem;
+        padding: 0 30rem;
+      }
+      @media (min-width: $break_point_desktop) {
+        width: 50rem;
+        height: 50rem;
+        padding: 0 40rem;
+
+        transform: translatey(4rem);
+      }
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__chevron {
+      display: none;
+      @media (min-width: $break_point_tablet) {
+      }
+      @media (min-width: $break_point_desktop) {
+        display: inline-block;
+
+        position: absolute;
+        // top: 15rem;
+        right: 40rem;
+
+        font-size: 20rem;
+      }
+    }
+  }
+}

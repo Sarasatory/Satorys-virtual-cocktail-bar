@@ -28,7 +28,10 @@
   <body class="body">
     <header class="header">
       <div class="header__cont">
-        <a href="#" class="header__cont__logo"
+        <a
+          href="https://github.com/Sarasatory"
+          target="_blank"
+          class="header__cont__logo"
           >Satory's<span class="header__cont__logo__span">.</span></a
         >
 
@@ -44,137 +47,87 @@
         <div class="favorites__cont-title">
           <div class="favorites__cont-title__img"></div>
           <h4 class="favorites__cont-title__title title--h4">Mis favoritos</h4>
-          <i class="favorites__cont-title__chevron fa-solid fa-chevron-down"></i>
+          <!-- <i class="favorites__cont-title__chevron fa-solid fa-chevron-down"></i> -->
         </div>
-        <div class="constructor--favDri js_list_favorites_CKT">
-          <!-- TARJETA -->
-          <!-- <div class="constructor--favDri__card">
-            <div
-              class="constructor--favDri__card__img"
-              style="background-image: url(../assets/images/grog002.jpeg)"
-            >
-              <div class="constructor--favDri__card__img__iconFav"></div>
-              <div class="constructor--favDri__card__img__iconDri"></div>
-            </div>
-            <h5 class="constructor--favDri__card__title title--h5">
-              Nombre del cóctel.
-            </h5>
-            <div class="constructor--favDri__card__cont-label">
-              <p class="constructor--favDri__card__cont-label__label">
-                Sin alcohol
-              </p>
-            </div>
-          </div> -->
-          <!-- FIN DE LA TARJETA -->
-        </div>
+        <!-- CONSTRUCTOR -->
+        <div class="constructor--favDri js_list_favorites_CKT"></div>
       </section>
-
-      <!--  -->
-      <!--  -->
-      <!--  -->
-
-      <!--  -->
-      <!--  -->
-      <!--  -->
 
       <section class="drinked">
         <div class="drinked__cont-title">
           <div class="drinked__cont-title__img"></div>
           <h4 class="drinked__cont-title__title title--h4">Bebidos</h4>
-          <i class="drinked__cont-title__chevron fa-solid fa-chevron-down"></i>
+          <!-- <i class="drinked__cont-title__chevron fa-solid fa-chevron-down"></i> -->
         </div>
-        <div class="constructor--favDri js_list_drinked_CKT">
-          <!-- TARJETA -->
-          <!-- <div class="constructor--favDri__card">
-            <div
-              class="constructor--favDri__card__img"
-              style="background-image: url(../assets/images/grog002.jpeg)"
-            >
-              <div class="constructor--favDri__card__img__iconFav"></div>
-              <div class="constructor--favDri__card__img__iconDri"></div>
-            </div>
-            <h5 class="constructor--favDri__card__title title--h5">
-              Nombre del cóctel.
-            </h5>
-            <p class="constructor--favDri__card__label">Sin alcohol</p>
-          </div> -->
-          <!-- FIN DE LA TARJETA -->
+        <!-- CONSTRUCTOR -->
+        <div class="constructor--favDri js_list_drinked_CKT"></div>
+      </section>
+
+      <section class="categories">
+        <h3 class="categories__title title--h3">Categorías</h3>
+
+        <div class="categories__cont">
+          <div
+            class="categories__cont__categorie typeCktMar js_header_link js_link_margarita"
+            id="mar"
+          >
+            <div class="typeCktMar__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">Margaritas</h6>
+          </div>
+          <div
+            class="categories__cont__categorie typeCktMoj js_header_link js_link_mojito"
+            id="moj"
+          >
+            <div class="typeCktMoj__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">Mojitos</h6>
+          </div>
+          <div
+            class="categories__cont__categorie typeCktGin js_header_link js_link_gin"
+            id="gin"
+          >
+            <div class="typeCktGin__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">Gins</h6>
+          </div>
+          <div
+            class="categories__cont__categorie typeCktRan js_header_link js_link_randon"
+            id="ran"
+          >
+            <div class="typeCktRan__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">
+              Cóctel aleatorio
+            </h6>
+          </div>
         </div>
+
+        <form class="categories__form">
+          <div class="categories__form__search-icon"></div>
+          <input
+            type="text"
+            name=""
+            placeholder="Encuentra tu cocktail preferido"
+            id="inputForm"
+            class="categories__form__input-search js_input_search"
+          />
+
+          <button class="js_btn_search button button--search">Buscar</button>
+
+          <!-- <input type="button" value="Buscar" class="js_btn_search" /> -->
+        </form>
       </section>
 
       <section class="search">
         <h2 class="search__title title--h2">Aquí tienes algunas sugerencias</h2>
-
-        <div class="constructor--seaRan js_list_search_CKT">
-          <!-- TARJETA -->
-          <!-- <div class="constructor--seaRan__card">
-            <div
-              class="constructor--seaRan__card__img"
-              style="background-image: url(../assets/images/grog002.jpeg)"
-            >
-              <div class="constructor--seaRan__card__img__iconFav"></div>
-              <div class="constructor--seaRan__card__img__iconDri"></div>
-            </div>
-
-            <h5 class="constructor--seaRan__card__title title--h5">
-              Nombre del cóctel.
-            </h5>
-            <p class="constructor--seaRan__card__ingredients-text">Ingredientes:</p>
-            <ul class="constructor--seaRan__card__ingredients-ul">
-              <li class="constructor--seaRan__card__ingredients-li">Ron</li>
-              <li class="constructor--seaRan__card__ingredients-li">Ron</li>
-              <li class="constructor--seaRan__card__ingredients-li">Ron</li>
-              <li class="constructor--seaRan__card__ingredients-li">Ron</li>
-            </ul>
-            <div class="constructor--seaRan__card__cont-label">
-              <p class="constructor--seaRan__card__cont-label__label">
-                Sin alcohol
-              </p>
-            </div>
-          </div> -->
-          <!-- FIN DE LA TARJETA -->
-        </div>
+        <!-- CONSTRUCTOR -->
+        <div class="constructor--seaRan js_list_search_CKT"></div>
       </section>
 
-      <!-- <section class="randonCKT"></section> -->
-      <!--  -->
-      <!--  -->
-      <section class="searchCKT">
-        <ul>
-          <li class="js_header_link js_link_margarita" id="mar">Margaritas</li>
-          <li class="js_header_link js_link_mojito" id="moj">Mojitos</li>
-          <li class="js_header_link js_link_gin" id="gin">Gins</li>
-          <li class="js_header_link js_link_randon" id="ran">Cóctel aleatorio</li>
-        </ul>
-        <form action="">
-          <label for="inputForm">Búsqueda:</label>
-          <input type="text" name="" id="inputForm" class="js_input_search" />
-
-          <input type="button" value="Buscar" class="js_btn_search" />
-          <!-- <input type="button" value="Reset" class="js_btn_reset" /> -->
-        </form>
-      </section>
-      <!--  -->
-
-      <!--  -->
-      <!-- <section class="resultsCKT">
-        <h2 class="title-h2">Cócteles</h2>
-        <div class="resultsCKT-wrapper">
-          <ul class="listSearchCKT js_list_search_CKT">
-            Lista de cócteles buscados o aleatorios.
-          </ul>
-
-          <ul class="listFavorites js_list_favorites_CKT">
-            Lista de cócteles favoritos.
-          </ul>
-          <ul class="listFavorites js_list_drinked_CKT">
-            Lista de cócteles bebidos.
-          </ul>
-        </div>
-      </section> -->
     </main>
 
-    
+    <footer class="footer">
+        <p class="footer__text"><a href="https://github.com/Sarasatory" target="_blank">
+            Made with 😈 <span class="wangle">-</span>by Satory</p>
+        </a>
+    </footer>
 
     <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>

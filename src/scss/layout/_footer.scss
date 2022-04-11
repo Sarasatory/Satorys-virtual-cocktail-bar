@@ -1,8 +1,34 @@
 .footer {
-  @media (min-width: $break_point_tablet) {
-    max-width: $max-width-tablet;
+  width: 100%;
+  height: 160rem;
+
+  border-top: 1rem solid $col_black_01;
+
+  &__text {
+    width: 100%;
+    height: 160rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 28rem;
+    font-weight: $fw-semi-bold;
+    line-height: 32rem;
+
+    @media (min-width: $break_point_tablet) {
+      max-width: $max-width-tablet;
+      font-size: 32rem;
+      line-height: 36rem;
+    }
+    @media (min-width: $break_point_desktop) {
+      max-width: $max-width-desktop;
+      font-size: 36rem;
+      line-height: 40rem;
+    }
   }
-  @media (min-width: $break_point_desktop) {
-    max-width: $max-width-desktop;
-  }
+}
+.wangle {
+  font-size: 16rem;
+  color: transparent;
 }
