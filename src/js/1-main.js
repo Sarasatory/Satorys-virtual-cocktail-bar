@@ -15,6 +15,13 @@ const listSearchCKT = document.querySelector('.js_list_search_CKT');
 const listFavoritesCKT = document.querySelector('.js_list_favorites_CKT');
 const listDrinkedCKT = document.querySelector('.js_list_drinked_CKT');
 
+// Títulos
+const counterFav = document.querySelector('.js_counter_fav');
+const counterDri = document.querySelector('.js_counter_dri');
+
+// Body. Sí, "body".
+const bodyJs = document.querySelector('.js_body');
+
 //
 // CONSTANTES Y VARIABLES.
 //
@@ -33,19 +40,23 @@ const randonURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
 // Generador de URL.
 let callApiUrl = '';
 
-// Número de elementos "randon" que aparecen al pintar la primera vez.
-let randonIni = 6;
-
 // Arrays con las listas de cócteles "Buscados" y "Favoritos".
 let cocktails = [];
 let cocktailsFavorites = [];
 let cocktailsDrinked = [];
+
+// Número de elementos "randon" que aparecen al pintar la primera vez.
+let randonIni = 6;
 
 // Creo un conmutador para decidir en qué lista hay que pintar.
 // swt = 0 --> Buscados.
 // swt = 1 --> Favoritos.
 // swt = 2 --> Bebidos.
 let swt = 0;
+
+// Contadores:
+let countCktFav = 0;
+let countCktDri = 0;
 
 //
 // FUNCIONES.
@@ -328,18 +339,27 @@ function paintFun(ckt, swt) {
 
     let addFavoriteClass = '';
     let addDrinkedClass = '';
-    // let heartStyle = 'fa-regular';
-    // let glassStyle = 'fa-martini-glass-citrus';
+    let addAlcoholicClass = '';
+    let addMaybeAlcoholicClass = '';
+    let addNonAlcoholicClass = '';
 
     if (itsFavoriteCkt !== -1) {
-      addFavoriteClass = 'favorite';
-      // heartStyle = 'fa-solid';
+      addFavoriteClass = 'favoriteClass';
     }
 
     if (itsDrinkedCkt !== -1) {
-      addDrinkedClass = 'drinked';
-      // glassStyle = 'fa-martini-glass-empty';
+      addDrinkedClass = 'drinkedClass';
     }
+
+    if (ckt[i].strAlcoholic === 'Alcoholic') {
+      addAlcoholicClass = 'alcoholicClass';
+    } else if (ckt[i].strAlcoholic === 'Optional alcohol') {
+      addMaybeAlcoholicClass = 'maybeAlcoholicClass';
+    } else {
+      addNonAlcoholicClass = 'nonAlcoholicClass';
+    }
+
+    console.log('---->', ckt[i].strAlcoholic, '<----');
 
     // Imagen por defecto.
     const imgDrink = ckt[i].strDrinkThumb;
@@ -352,9 +372,9 @@ function paintFun(ckt, swt) {
     //
     htmlToPaint += `<div class="constructor--${way}__card" id="${ckt[i].idDrink}">`;
     htmlToPaint += `<div class="constructor--${way}__card__img" style="background-image: url(${imgDrink})">`;
-    htmlToPaint += `<div class="constructor--${way}__card__img__iconFav js_icon_favorite" id="${ckt[i].idDrink}">`;
+    htmlToPaint += `<div class="constructor--${way}__card__img__iconFav js_icon_favorite ${addFavoriteClass}" id="${ckt[i].idDrink}">`;
     htmlToPaint += `</div>`;
-    htmlToPaint += `<div class="constructor--${way}__card__img__iconDri js_icon_glass" id="${ckt[i].idDrink}">`;
+    htmlToPaint += `<div class="constructor--${way}__card__img__iconDri js_icon_glass ${addDrinkedClass}" id="${ckt[i].idDrink}">`;
     htmlToPaint += `</div>`;
     htmlToPaint += `</div>`;
     htmlToPaint += `<h5 class="constructor--${way}__card__title title--h5">${ckt[i].strDrink}</h5>`;
@@ -381,7 +401,7 @@ function paintFun(ckt, swt) {
     }
 
     htmlToPaint += `<div class="constructor--${way}__card__cont-label">`;
-    htmlToPaint += `<p class="constructor--${way}__card__cont-label__label">${ckt[i].strAlcoholic}</p>`;
+    htmlToPaint += `<p class="constructor--${way}__card__cont-label__label ${addAlcoholicClass} ${addMaybeAlcoholicClass} ${addNonAlcoholicClass}">${ckt[i].strAlcoholic}</p>`;
     htmlToPaint += `</div>`;
     htmlToPaint += `</div>`;
   }
@@ -399,6 +419,11 @@ function paintFun(ckt, swt) {
     listDrinkedCKT.innerHTML = '';
     listDrinkedCKT.innerHTML += htmlToPaint;
   }
+
+  countCktFav = cocktailsFavorites.length;
+  countCktDri = cocktailsDrinked.length;
+
+  drunkennessFun(countCktFav, countCktDri);
 
   // Después de pintar, escucho de nuevo las listas.
   listenCocktails();
@@ -419,6 +444,48 @@ function callApi(callApiUrl) {
       // Llamo a la función que pinta las tarjetas.
       paintFun(cocktails, 0);
     });
+}
+
+//
+//
+//
+function drunkennessFun(countCktFav, countCktDri) {
+  counterFav.innerHTML = 'Mis favorios (' + countCktFav + ')';
+  counterDri.innerHTML = '';
+
+  const drunkenness = [
+    ':)',
+    'Voy bien',
+    'Sin problema',
+    'El puntito',
+    '¡¡Otra!!',
+    '¡Tía!, ¡¡Te quiero1!',
+    'Tranquiihh... ¡Que yo controlo!',
+  ];
+
+  const drunkCss = [
+    'drunkenness1',
+    'drunkenness2',
+    'drunkenness3',
+    'drunkenness4',
+    'drunkenness5',
+    'drunkenness6',
+    'drunkenness7',
+  ];
+
+  for (let i = 0; i < drunkenness.length; i++) {
+    if (i === countCktDri) {
+      counterDri.innerHTML =
+        'Los que he bebido (' + countCktDri + ') - ' + drunkenness[i];
+    }
+  }
+
+  for (let j = 0; j < drunkCss.length; j++) {
+    bodyJs.classList.remove(`drunkenness${j}`);
+    if (j === countCktDri) {
+      bodyJs.classList.add(`drunkenness${j}`);
+    }
+  }
 }
 
 //

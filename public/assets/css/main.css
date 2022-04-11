@@ -352,68 +352,68 @@ button {
 .title--h1 {
   font-size: 30rem;
   font-weight: 600;
-  line-height: 44rem; }
+  line-height: normal; }
   @media (min-width: 480px) {
     .title--h1 {
       font-size: 40rem;
-      line-height: 44rem; } }
+      line-height: normal; } }
   @media (min-width: 768px) {
     .title--h1 {
       font-size: 48rem;
-      line-height: 52rem; } }
+      line-height: normal; } }
 
 .title--h2 {
   font-size: 26rem;
   font-weight: 600;
-  line-height: 40rem; }
+  line-height: normal; }
   @media (min-width: 480px) {
     .title--h2 {
       font-size: 36rem;
-      line-height: 40rem; } }
+      line-height: normal; } }
   @media (min-width: 768px) {
     .title--h2 {
       font-size: 44rem;
-      line-height: 48rem; } }
+      line-height: normal; } }
 
 .title--h3 {
   font-size: 28rem;
   font-weight: 600;
-  line-height: 32rem; }
+  line-height: normal; }
   @media (min-width: 480px) {
     .title--h3 {
       font-size: 32rem;
-      line-height: 36rem; } }
+      line-height: normal; } }
   @media (min-width: 768px) {
     .title--h3 {
       font-size: 36rem;
-      line-height: 40rem; } }
+      line-height: normal; } }
 
 .title--h4 {
   font-size: 20rem;
   font-weight: 600;
-  line-height: 24rem; }
+  line-height: normal; }
   @media (min-width: 480px) {
     .title--h4 {
       font-size: 24rem;
-      line-height: 28rem; } }
+      line-height: normal; } }
 
 .title--h5 {
   font-size: 18rem;
   font-weight: 600;
-  line-height: 22rem; }
+  line-height: normal; }
   @media (min-width: 480px) {
     .title--h5 {
       font-size: 22rem;
-      line-height: 26rem; } }
+      line-height: normal; } }
 
 .title--h6 {
   font-size: 16rem;
   font-weight: 600;
-  line-height: 22rem; }
+  line-height: normal; }
   @media (min-width: 480px) {
     .title--h6 {
       font-size: 20rem;
-      line-height: 26rem; } }
+      line-height: normal; } }
 
 .button {
   width: 130rem;
@@ -467,13 +467,14 @@ button {
 
 .constructor--favDri {
   width: auto;
-  height: 300rem;
+  height: 320rem;
+  display: flex;
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap; }
   .constructor--favDri__card {
     width: 220rem;
-    height: 290rem;
+    height: 310rem;
     padding: 10rem;
     margin: 0 10rem;
     display: inline-block;
@@ -484,6 +485,7 @@ button {
       height: 130rem;
       margin-bottom: 20rem;
       position: relative;
+      background-image: url(../images/grog002.jpeg);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
@@ -494,7 +496,7 @@ button {
         position: absolute;
         top: 5rem;
         right: 0;
-        background-image: url(../images/heart-color-centered.svg);
+        background-image: url(../images/heart-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right; }
@@ -506,7 +508,7 @@ button {
         position: absolute;
         bottom: 5rem;
         right: 0;
-        background-image: url(../images/cocktail-color-centered.svg);
+        background-image: url(../images/cocktail-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right; }
@@ -515,7 +517,6 @@ button {
     .constructor--favDri__card__title {
       width: 200rem;
       max-width: 200rem;
-      max-height: 60rem;
       margin-bottom: 20rem;
       white-space: normal;
       text-align: left;
@@ -533,7 +534,7 @@ button {
         color: #fff;
         font-size: 16rem;
         font-weight: 500;
-        background-color: rgba(124, 85, 205, 0.7);
+        background-color: rgba(56, 151, 240, 0.7);
         border-radius: 20rem; }
 
 .constructor--seaRan {
@@ -541,7 +542,7 @@ button {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30rem; }
   .constructor--seaRan__card {
-    min-height: 550rem;
+    min-height: 580rem;
     padding: 10rem;
     display: inline-block;
     text-align: left;
@@ -557,31 +558,30 @@ button {
       background-position: center center;
       border-radius: 30rem; }
       .constructor--seaRan__card__img__iconFav {
-        min-width: 160rem;
-        height: 60rem;
+        min-width: 140rem;
+        height: 50rem;
         position: absolute;
         top: 5rem;
         right: 1rem;
-        background-image: url(../images/heart-color-centered.svg);
+        background-image: url(../images/heart-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right; }
         .constructor--seaRan__card__img__iconFav:hover {
           cursor: pointer; }
       .constructor--seaRan__card__img__iconDri {
-        min-width: 160rem;
-        height: 60rem;
+        min-width: 140rem;
+        height: 50rem;
         position: absolute;
         bottom: 5rem;
         right: 1rem;
-        background-image: url(../images/cocktail-color-centered.svg);
+        background-image: url(../images/cocktail-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right; }
         .constructor--seaRan__card__img__iconDri:hover {
           cursor: pointer; }
     .constructor--seaRan__card__title {
-      max-height: 60rem;
       margin-bottom: 20rem;
       white-space: normal;
       text-align: left;
@@ -610,7 +610,7 @@ button {
         color: #fff;
         font-size: 16rem;
         font-weight: 500;
-        background-color: rgba(124, 85, 205, 0.7);
+        background-color: rgba(56, 151, 240, 0.7);
         border-radius: 20rem; }
 
 .header {
@@ -867,5 +867,55 @@ button {
 
 img {
   border: none; }
+
+.drunkenness1 {
+  filter: blur(0.5px); }
+
+.drunkenness2 {
+  filter: blur(1px); }
+
+.drunkenness3 {
+  filter: blur(1.5px); }
+
+.drunkenness4 {
+  filter: blur(2px); }
+
+.drunkenness5 {
+  filter: blur(3px); }
+
+.drunkenness6 {
+  filter: blur(4px); }
+
+.drunkenness7 {
+  filter: blur(5px); }
+
+.favoriteClass {
+  min-width: 140rem;
+  height: 50rem;
+  top: 5rem;
+  right: 0;
+  background-image: url(../images/heart-color-centered.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right; }
+
+.drinkedClass {
+  min-width: 140rem;
+  height: 50rem;
+  bottom: 5rem;
+  right: 0;
+  background-image: url(../images/cocktail-color-centered.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right; }
+
+.alcoholicClass {
+  background-color: rgba(56, 151, 240, 0.7); }
+
+.maybeAlcoholicClass {
+  background-color: rgba(240, 158, 0, 0.7); }
+
+.nonAlcoholicClass {
+  background-color: rgba(124, 85, 205, 0.7); }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,3 +1,65 @@
 img {
   border: none;
 }
+
+.drunkenness1 {
+  filter: blur(0.5px);
+}
+.drunkenness2 {
+  filter: blur(1px);
+}
+.drunkenness3 {
+  filter: blur(1.5px);
+}
+.drunkenness4 {
+  filter: blur(2px);
+}
+.drunkenness5 {
+  filter: blur(3px);
+}
+.drunkenness6 {
+  filter: blur(4px);
+}
+.drunkenness7 {
+  filter: blur(5px);
+}
+
+.favoriteClass {
+  min-width: 140rem;
+  height: 50rem;
+
+  // position: absolute;
+  top: 5rem;
+  right: 0;
+
+  background-image: url(../images/heart-color-centered.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+}
+
+.drinkedClass {
+  min-width: 140rem;
+  height: 50rem;
+
+  // position: absolute;
+  bottom: 5rem;
+  right: 0;
+
+  background-image: url(../images/cocktail-color-centered.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top right;
+}
+
+.alcoholicClass {
+  background-color: $col_blue_07;
+}
+
+.maybeAlcoholicClass {
+  background-color: $col_orange_07;
+}
+
+.nonAlcoholicClass {
+  background-color: $col_purple_07;
+}

@@ -15,77 +15,77 @@
 .title--h1 {
   font-size: 30rem;
   font-weight: $fw-semi-bold;
-  line-height: 44rem;
+  line-height: normal;
 
   @media (min-width: $break_point_tablet) {
     font-size: 40rem;
-    line-height: 44rem;
+    line-height: normal;
   }
   @media (min-width: $break_point_desktop) {
     font-size: 48rem;
-    line-height: 52rem;
+    line-height: normal;
   }
 }
 
 .title--h2 {
   font-size: 26rem;
   font-weight: $fw-semi-bold;
-  line-height: 40rem;
+  line-height: normal;
 
   @media (min-width: $break_point_tablet) {
     font-size: 36rem;
-    line-height: 40rem;
+    line-height: normal;
   }
   @media (min-width: $break_point_desktop) {
     font-size: 44rem;
-    line-height: 48rem;
+    line-height: normal;
   }
 }
 
 .title--h3 {
   font-size: 28rem;
   font-weight: $fw-semi-bold;
-  line-height: 32rem;
+  line-height: normal;
 
   @media (min-width: $break_point_tablet) {
     font-size: 32rem;
-    line-height: 36rem;
+    line-height: normal;
   }
   @media (min-width: $break_point_desktop) {
     font-size: 36rem;
-    line-height: 40rem;
+    line-height: normal;
   }
 }
 
 .title--h4 {
   font-size: 20rem;
   font-weight: $fw-semi-bold;
-  line-height: 24rem;
+  line-height: normal;
 
   @media (min-width: $break_point_tablet) {
     font-size: 24rem;
-    line-height: 28rem;
+    line-height: normal;
   }
 }
 
 .title--h5 {
   font-size: 18rem;
   font-weight: $fw-semi-bold;
-  line-height: 22rem;
+  line-height: normal;
 
   @media (min-width: $break_point_tablet) {
     font-size: 22rem;
-    line-height: 26rem;
+    line-height: normal;
   }
 }
 
 .title--h6 {
   font-size: 16rem;
   font-weight: $fw-semi-bold;
-  line-height: 22rem;
+  line-height: normal;
 
   @media (min-width: $break_point_tablet) {
     font-size: 20rem;
-    line-height: 26rem;
+    line-height: normal;
   }
 }

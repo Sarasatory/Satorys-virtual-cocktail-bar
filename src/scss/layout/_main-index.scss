@@ -27,21 +27,18 @@
 
 .constructor--favDri {
   width: auto;
-  height: 300rem;
+  height: 320rem;
+
+  display: flex;
 
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
 
-  @media (min-width: $break_point_tablet) {
-  }
-  @media (min-width: $break_point_desktop) {
-  }
-
   // TARJETAS.
   &__card {
     width: 220rem;
-    height: 290rem;
+    height: 310rem;
     padding: 10rem;
     margin: 0 10rem;
 
@@ -66,7 +63,7 @@
 
       position: relative;
 
-      // background-image: url(../images/grog002.jpeg);
+      background-image: url(../images/grog002.jpeg);
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
@@ -80,18 +77,13 @@
         top: 5rem;
         right: 0;
 
-        background-image: url(../images/heart-color-centered.svg);
+        background-image: url(../images/heart-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right;
 
         &:hover {
           cursor: pointer;
-
-          // background-image: url(../images/heart-grey-open.svg);
-          // background-repeat: no-repeat;
-          // background-size: cover;
-          // background-position: top right;
         }
       }
       &__iconDri {
@@ -102,18 +94,13 @@
         bottom: 5rem;
         right: 0;
 
-        background-image: url(../images/cocktail-color-centered.svg);
+        background-image: url(../images/cocktail-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right;
 
         &:hover {
           cursor: pointer;
-
-          // background-image: url(../images/heart-grey-open.svg);
-          // background-repeat: no-repeat;
-          // background-size: cover;
-          // background-position: top right;
         }
       }
     }
@@ -121,7 +108,6 @@
     &__title {
       width: 200rem;
       max-width: 200rem;
-      max-height: 60rem;
       margin-bottom: 20rem;
 
       white-space: normal;
@@ -148,7 +134,7 @@
         font-size: 16rem;
         font-weight: $fw-medium;
 
-        background-color: $col_purple_07;
+        background-color: $col_blue_07;
         border-radius: 20rem;
       }
     }
@@ -167,7 +153,7 @@
 
   // TARJETAS.
   &__card {
-    min-height: 550rem;
+    min-height: 580rem;
     padding: 10rem;
 
     display: inline-block;
@@ -197,53 +183,42 @@
       background-position: center center;
       border-radius: 30rem;
       &__iconFav {
-        min-width: 160rem;
-        height: 60rem;
+        min-width: 140rem;
+        height: 50rem;
 
         position: absolute;
         top: 5rem;
         right: 1rem;
 
-        background-image: url(../images/heart-color-centered.svg);
+        background-image: url(../images/heart-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right;
 
         &:hover {
           cursor: pointer;
-
-          // background-image: url(../images/heart-grey-open.svg);
-          // background-repeat: no-repeat;
-          // background-size: cover;
-          // background-position: top right;
         }
       }
       &__iconDri {
-        min-width: 160rem;
-        height: 60rem;
+        min-width: 140rem;
+        height: 50rem;
 
         position: absolute;
         bottom: 5rem;
         right: 1rem;
 
-        background-image: url(../images/cocktail-color-centered.svg);
+        background-image: url(../images/cocktail-grey-centered.svg);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top right;
 
         &:hover {
           cursor: pointer;
-
-          // background-image: url(../images/heart-grey-open.svg);
-          // background-repeat: no-repeat;
-          // background-size: cover;
-          // background-position: top right;
         }
       }
     }
 
     &__title {
-      max-height: 60rem;
       margin-bottom: 20rem;
 
       white-space: normal;
@@ -287,95 +262,9 @@
         font-size: 16rem;
         font-weight: $fw-medium;
 
-        background-color: $col_purple_07;
+        background-color: $col_blue_07;
         border-radius: 20rem;
       }
     }
   }
 }
-
-// //
-// //
-// //
-// //
-// //
-
-// //
-// //
-// //
-// //
-// //
-
-// .resultsCKT-wrapper {
-//   width: 100%;
-//   display: flex;
-//   flex-direction: row-reverse;
-//   justify-content: space-between;
-// }
-
-// .cocktailCard {
-//   width: 310rem;
-//   padding: 30rem;
-//   margin-bottom: 20rem;
-
-//   position: relative;
-
-//   background-color: beige;
-//   border-radius: 10rem;
-
-//   &__icon-favourite {
-//     position: absolute;
-//     top: 10rem;
-//     right: 10rem;
-
-//     font-size: 20rem;
-
-//     color: red;
-
-//     // CAMBIAR "fa-regular" por "fa-solid" al meter en favoritos.
-//     &:hover {
-//       cursor: pointer;
-//     }
-//   }
-
-//   &__icon-glass {
-//     position: absolute;
-//     top: 10rem;
-//     right: 40rem;
-
-//     font-size: 20rem;
-
-//     color: red;
-
-//     // CAMBIAR "fa-regular" por "fa-solid" al meter en favoritos.
-//     &:hover {
-//       cursor: pointer;
-//     }
-//   }
-
-//   &__title {
-//     font-size: 20rem;
-//     margin-bottom: 10rem;
-//   }
-
-//   &__img {
-//     width: 250rem;
-//     height: 250rem;
-//     margin-bottom: 10rem;
-//   }
-
-//   &__alcoholic {
-//     text-align: right;
-//     font-size: 14rem;
-//   }
-
-//   &__ingredients {
-//     text-transform: uppercase;
-//     margin-bottom: 10rem;
-//   }
-//   &__list-ingredients {
-//     &__li {
-//       margin-left: 30rem;
-//     }
-//   }
-// }
