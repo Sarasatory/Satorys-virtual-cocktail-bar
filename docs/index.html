@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&family=Lobster&display=swap"
       rel="stylesheet"
     />
 
@@ -23,65 +23,114 @@
     <link rel="stylesheet" href="./assets/css/main.css" />
 
 
-    <title>Módulo 2 - Evaluación final - Satory - GitHub?</title>
+    <title>Cócteles del mundo</title>
   </head>
-  <body>
-    <main class="main">
-      <h1 class="title-h1">Módulo 2 - Evaluación final - Satory</h1>
-      <!-- <section class="randonCKT"></section> -->
-      <!--  -->
-      <!--  -->
-      <section class="searchCKT">
-        <ul>
-          <li class="js_header_link js_link_nonAlcoholic" id="nonAlc">
-            Sin alcohol
-          </li>
-          <li class="js_header_link js_link_margarita" id="mar">Margaritas</li>
-          <li class="js_header_link js_link_mojito" id="moj">Mojitos</li>
-          <li class="js_header_link js_link_gin" id="gin">Gins</li>
-          <li class="js_header_link js_link_randon" id="ran">
-            Cóctel aleatorio
-          </li>
-        </ul>
-        <form action="">
-          <label for="inputForm">Búsqueda:</label>
-          <input type="text" name="" id="inputForm" class="js_input_search" />
+  <body class="body js_body">
+    <header class="header">
+      <div class="header__cont">
+        <a
+          href="https://github.com/Sarasatory"
+          target="_blank"
+          class="header__cont__logo"
+          >Satory's<span class="header__cont__logo__span">.</span></a
+        >
 
-          <input type="button" value="Buscar" class="js_btn_search" />
-          <input type="button" value="Reset" class="js_btn_reset" />
+        <button class="js_btn_reset button button--reset">Reset</button>
+
+      </div>
+    </header>
+
+    <main class="main">
+      <h1 class="main__title title--h1">Cócteles del mundo</h1>
+
+      <section class="favorites">
+        <div class="favorites__cont-title">
+          <div class="favorites__cont-title__img"></div>
+          <h4 class="favorites__cont-title__title title--h4 js_counter_fav">
+            Mis favoritos
+          </h4>
+          <!-- <i class="favorites__cont-title__chevron fa-solid fa-chevron-down"></i> -->
+        </div>
+        <!-- CONSTRUCTOR -->
+        <div class="constructor--favDri js_list_favorites_CKT"></div>
+      </section>
+
+      <section class="drinked">
+        <div class="drinked__cont-title">
+          <div class="drinked__cont-title__img"></div>
+          <h4 class="drinked__cont-title__title title--h4 js_counter_dri">Bebidos</h4>
+          <!-- <i class="drinked__cont-title__chevron fa-solid fa-chevron-down"></i> -->
+        </div>
+        <!-- CONSTRUCTOR -->
+        <div class="constructor--favDri js_list_drinked_CKT"></div>
+      </section>
+
+      <section class="categories">
+        <h3 class="categories__title title--h3">Categorías</h3>
+
+        <div class="categories__cont">
+          <div
+            class="categories__cont__categorie typeCktMar js_header_link js_link_margarita"
+            id="mar"
+          >
+            <div class="typeCktMar__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">Margaritas</h6>
+          </div>
+          <div
+            class="categories__cont__categorie typeCktMoj js_header_link js_link_mojito"
+            id="moj"
+          >
+            <div class="typeCktMoj__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">Mojitos</h6>
+          </div>
+          <div
+            class="categories__cont__categorie typeCktGin js_header_link js_link_gin"
+            id="gin"
+          >
+            <div class="typeCktGin__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">Gins</h6>
+          </div>
+          <div
+            class="categories__cont__categorie typeCktRan js_header_link js_link_randon"
+            id="ran"
+          >
+            <div class="typeCktRan__img"></div>
+            <h6 class="categories__cont__categorie__title title--h6">
+              Cóctel aleatorio
+            </h6>
+          </div>
+        </div>
+
+        <form class="categories__form">
+          <div class="categories__form__search-icon"></div>
+          <input
+            type="text"
+            name=""
+            placeholder="Encuentra tu cocktail preferido"
+            id="inputForm"
+            class="categories__form__input-search js_input_search"
+          />
+
+          <button class="js_btn_search button button--search">Buscar</button>
+
+          <!-- <input type="button" value="Buscar" class="js_btn_search" /> -->
         </form>
       </section>
-      <!--  -->
-      <!--  -->
-      <section class="resultsCKT">
-        <h2 class="title-h2">Cócteles</h2>
-        <div class="resultsCKT-wrapper">
-          <ul class="listSearchCKT js_list_search_CKT">
-            <li class="cocktailCard js_cocktail_card" id="cardId000">
-              <i
-                class="cocktailCard__icon-favourite js_icon_favorite fa-regular fa-heart"
-                id="heartId000"
-              ></i>
-              <h3 class="cocktailCard__title">Nombre del cóctel</h3>
-              <img
-                src="../assets/images/grog002.jpeg"
-                alt="Imágen de un cóctel"
-                class="cocktailCard__img"
-              />
-              <p class="cocktailCard__alcoholic">Alcohólico</p>
-              <p class="cocktailCard__ingredients">Ingredientes:</p>
-              <ul class="cocktailCard__list-ingredients">
-                <li class="cocktailCard__list-ingredients__li">Ingrediente</li>
-              </ul>
-            </li>
-          </ul>
 
-          <ul class="listFavorites js_list_favorites_CKT">
-            Lista de cócteles favoritos.
-          </ul>
-        </div>
+      <section class="search">
+        <h2 class="search__title title--h2">Aquí tienes algunas sugerencias</h2>
+        <!-- CONSTRUCTOR -->
+        <div class="constructor--seaRan js_list_search_CKT"></div>
       </section>
+
     </main>
+
+    <footer class="footer">
+        <p class="footer__text"><a href="https://github.com/Sarasatory" target="_blank">
+            Made with 😈 <span class="wangle">-</span>by Satory</p>
+        </a>
+    </footer>
+
     <script type="text/javascript" src="./assets/js/main.js"></script>
   </body>
 </html>
