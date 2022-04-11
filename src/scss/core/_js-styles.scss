@@ -15,13 +15,22 @@ img {
   filter: blur(2px);
 }
 .drunkenness5 {
-  filter: blur(3px);
+  filter: blur(2.5px);
 }
 .drunkenness6 {
-  filter: blur(4px);
+  filter: blur(3px);
 }
 .drunkenness7 {
-  filter: blur(5px);
+  filter: blur(3.5px);
+}
+.drunkenness8 {
+  filter: blur(4px);
+}
+.drunkenness9 {
+  filter: blur(0px);
+}
+.drunkenness10 {
+  filter: blur(0px);
 }
 
 .favoriteClass {
@@ -62,4 +71,36 @@ img {
 
 .nonAlcoholicClass {
   background-color: $col_purple_07;
+}
+
+.constructorEmpty {
+  width: 100%;
+  padding: 60rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #aaa;
+
+  &__imgFav {
+    width: 100%;
+    height: 250rem;
+    background-image: url(../images/002.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+  }
+  &__imgDri {
+    width: 100%;
+    height: 250rem;
+    background-image: url(../images/004.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+  }
+  &__p {
+    // opacity: 0.3;
+  }
 }

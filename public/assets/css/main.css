@@ -645,6 +645,9 @@ button {
 .footer {
   width: 100%;
   height: 160rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 1rem solid rgba(0, 0, 0, 0.1); }
   .footer__text {
     width: 100%;
@@ -881,13 +884,22 @@ img {
   filter: blur(2px); }
 
 .drunkenness5 {
-  filter: blur(3px); }
+  filter: blur(2.5px); }
 
 .drunkenness6 {
-  filter: blur(4px); }
+  filter: blur(3px); }
 
 .drunkenness7 {
-  filter: blur(5px); }
+  filter: blur(3.5px); }
+
+.drunkenness8 {
+  filter: blur(4px); }
+
+.drunkenness9 {
+  filter: blur(0px); }
+
+.drunkenness10 {
+  filter: blur(0px); }
 
 .favoriteClass {
   min-width: 140rem;
@@ -917,5 +929,28 @@ img {
 
 .nonAlcoholicClass {
   background-color: rgba(124, 85, 205, 0.7); }
+
+.constructorEmpty {
+  width: 100%;
+  padding: 60rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #aaa; }
+  .constructorEmpty__imgFav {
+    width: 100%;
+    height: 250rem;
+    background-image: url(../images/002.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center; }
+  .constructorEmpty__imgDri {
+    width: 100%;
+    height: 250rem;
+    background-image: url(../images/004.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center; }
 
 /*# sourceMappingURL=main.css.map */

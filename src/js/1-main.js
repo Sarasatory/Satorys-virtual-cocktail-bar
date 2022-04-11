@@ -321,6 +321,7 @@ function paintFun(ckt, swt) {
   }
 
   let htmlToPaint = '';
+  let addAlcCon = '';
 
   for (let i = 0; i < ckt.length; i++) {
     // htmlToPaint = '';
@@ -353,6 +354,7 @@ function paintFun(ckt, swt) {
 
     if (ckt[i].strAlcoholic === 'Alcoholic') {
       addAlcoholicClass = 'alcoholicClass';
+      addAlcCon = 'Alcoholic';
     } else if (ckt[i].strAlcoholic === 'Optional alcohol') {
       addMaybeAlcoholicClass = 'maybeAlcoholicClass';
     } else {
@@ -423,7 +425,7 @@ function paintFun(ckt, swt) {
   countCktFav = cocktailsFavorites.length;
   countCktDri = cocktailsDrinked.length;
 
-  drunkennessFun(countCktFav, countCktDri);
+  drunkennessFun(countCktFav, countCktDri, addAlcCon);
 
   // Después de pintar, escucho de nuevo las listas.
   listenCocktails();
@@ -449,8 +451,8 @@ function callApi(callApiUrl) {
 //
 //
 //
-function drunkennessFun(countCktFav, countCktDri) {
-  counterFav.innerHTML = 'Mis favorios (' + countCktFav + ')';
+function drunkennessFun(countCktFav, countCktDri, addAlcCon) {
+  counterFav.innerHTML = 'Mis favoritos (' + countCktFav + ')';
   counterDri.innerHTML = '';
 
   const drunkenness = [
@@ -461,8 +463,12 @@ function drunkennessFun(countCktFav, countCktDri) {
     '¡¡Otra!!',
     '¡Tía!, ¡¡Te quiero1!',
     'Tranquiihh... ¡Que yo controlo!',
+    '¿Ehhh...? ¡XD XD XD!',
+    'Z... z... z...',
+    'Ale, ya debe ser el día siguiente :)',
   ];
 
+  // Array con las "class" que añaden el efecto blur en función de los cócteles bebidos.
   const drunkCss = [
     'drunkenness1',
     'drunkenness2',
@@ -471,6 +477,8 @@ function drunkennessFun(countCktFav, countCktDri) {
     'drunkenness5',
     'drunkenness6',
     'drunkenness7',
+    'drunkenness8',
+    'drunkenness9',
   ];
 
   for (let i = 0; i < drunkenness.length; i++) {
@@ -480,9 +488,11 @@ function drunkennessFun(countCktFav, countCktDri) {
     }
   }
 
+  let addAlc = -1;
   for (let j = 0; j < drunkCss.length; j++) {
     bodyJs.classList.remove(`drunkenness${j}`);
     if (j === countCktDri) {
+      console.log('<--->', countCktDri, '<--->');
       bodyJs.classList.add(`drunkenness${j}`);
     }
   }
@@ -529,6 +539,10 @@ function handleClickSearch(event) {
 
   callApiUrl = searchURL + inputSearchValue;
 
+  if (inputSearchValue === '') {
+    inputSearch.placeholder = 'Tienes que decirme qué buscar ahora ;)';
+    return;
+  }
   // Si quiero meter otra URL tiene que llegar aquí ;)
   // callApi('https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic');
   callApi(callApiUrl);
@@ -550,6 +564,28 @@ function handleClickReset() {
   paintFun(cocktailsFavorites, 1);
   paintFun(cocktailsDrinked, 2);
   getRandonCocktails();
+
+  listFavoritesCKT.innerHTML = `
+   <div class="constructorEmpty">
+      <p class="constructorEmpty__p title--h4">
+        Aún no has añadido níngun cóctel
+      </p>
+      <p class="constructorEmpty__p title--h5">
+        Prueba a pinchar su corazón ;)
+      </p>
+      <div class="constructorEmpty__imgFav"></div>
+    </div>`;
+
+  listDrinkedCKT.innerHTML = `
+   <div class="constructorEmpty">
+      <p class="constructorEmpty__p title--h4">
+        Aún no te has bebido níngun cóctel
+      </p>
+      <p class="constructorEmpty__p title--h5">
+        Prueba a pinchar su coctelera ;)
+      </p>
+      <div class="constructorEmpty__imgDri"></div>
+    </div>`;
 }
 
 //
@@ -565,6 +601,7 @@ inputSearch.addEventListener('keyup', handleClickSearch);
 inputSearch.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
     e.preventDefault();
+    inputSearch.value = '';
   }
 });
 
